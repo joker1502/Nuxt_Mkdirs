@@ -25,7 +25,6 @@ export default defineNuxtConfig({
   ],
 
   // Google Analytics 配置
-  // nuxt-gtag 模块会自动从 runtimeConfig.public.googleAnalyticsId 读取配置
   gtag: {
     enabled: true,
   },
@@ -50,6 +49,9 @@ export default defineNuxtConfig({
   // projectId and dataset are read from sanity.config.ts automatically
   sanity: {
     useCdn: false,
+    projectId: 'isvdg9tz',
+    dataset: 'production',
+    apiToken: process.env.NUXT_SANITY_API_TOKEN || '',
   },
 
   colorMode: {
@@ -68,7 +70,6 @@ export default defineNuxtConfig({
     },
 
     // Server-side only (private) - auto-mapped from NUXT_*
-    // e.g., NUXT_SANITY_API_TOKEN -> sanityApiToken
     sanityApiToken: '',
     resendApiKey: '',
     resendEmailFrom: 'onboarding@resend.dev',
@@ -90,10 +91,9 @@ export default defineNuxtConfig({
     aiProvider: 'google',
 
     // Client-side (public) - auto-mapped from NUXT_PUBLIC_*
-    // e.g., NUXT_PUBLIC_APP_URL -> public.appUrl
     public: {
       appUrl: 'http://localhost:3000',
-      sanityProjectId: '',
+      sanityProjectId: 'isvdg9tz',
       sanityDataset: 'production',
       stripePublishableKey: '',
       stripeProPriceId: '',
@@ -112,11 +112,11 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'Nuxt Mkdirs - The Best Directory Website Template for Nuxt',
+      title: 'AI Agent Directory - Discover the Best AI Agents',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'This is the Nuxt.js version of Mkdirs template. The ultimate directory website template built with Nuxt.' },
+        { name: 'description', content: '发现最好用的AI智能体工具。Discover and explore the best AI agents and tools.' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
