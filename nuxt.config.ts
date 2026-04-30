@@ -41,8 +41,14 @@ export default defineNuxtConfig({
   },
 
   hub: {
-    // NuxtHub configuration
+    // NuxtHub configuration for Cloudflare Pages
     // https://hub.nuxt.com/docs/getting-started/deploy
+  },
+
+  // Cloudflare Pages specific config
+  // Ensures the worker runs correctly on Cloudflare Pages
+  routeRules: {
+    '/**': { isr: false },
   },
 
   // Sanity configuration

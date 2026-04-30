@@ -2,8 +2,9 @@ node_modules
 .env
 .env.*
 !.env.example
-wrangler.jsonc
-!wrangler.example.jsonc
+# wrangler.jsonc 需要提交给 Cloudflare Pages 构建用
+# !wrangler.example.jsonc
+wrangler.example.jsonc
 .nuxt
 .output
 .data

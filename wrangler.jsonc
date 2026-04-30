@@ -1,0 +1,39 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-agent-directory",
+  "main": "./dist/server/index.mjs",
+  "compatibility_date": "2025-12-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/public/",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    // AI Provider: google | deepseek | openai
+    "NUXT_AI_PROVIDER": "deepseek",
+
+    // Auth Secret - generate with: openssl rand -base64 32
+    "NUXT_AUTH_SECRET": "ci3aOGjsJBSQdWE3dHfz0eMfqIuzkO8t+h373VTm3eY=",
+
+    // Public App URL
+    "NUXT_PUBLIC_APP_URL": "https://ai-agent-directory.workers.dev",
+
+    // Pagination
+    "NUXT_PUBLIC_ITEMS_PER_PAGE": "12",
+
+    // Sanity CMS - https://sanity.io
+    "NUXT_PUBLIC_SANITY_DATASET": "production",
+    "NUXT_PUBLIC_SANITY_PROJECT_ID": "isvdg9tz",
+    // NUXT_SANITY_API_TOKEN is set via Cloudflare Pages environment variables
+
+    // Feature Flags
+    "NUXT_PUBLIC_SUPPORT_CATEGORY_GROUP": "true",
+    "NUXT_PUBLIC_SUPPORT_ITEM_ICON": "true",
+
+    // Resend Email - https://resend.com
+    "NUXT_RESEND_EMAIL_FROM": "onboarding@resend.dev"
+  }
+}
