@@ -37,6 +37,8 @@ export default defineNuxtConfig({
       '/settings/**',
       '/payment/**',
       '/publish/**',
+      '/collection',
+      '/collection/**',
     ],
     siteUrl: 'https://topaiskills.com',
     discoverImages: true,

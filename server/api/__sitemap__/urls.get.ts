@@ -25,8 +25,6 @@ export default defineSitemapEventHandler(async (event) => {
   const blogPosts = await sanity.fetch(`*[_type == "blogPost" && defined(slug.current) && defined(publishDate)] { "slug": slug.current, _updatedAt }`)
   // Fetch all blog categories
   const blogCategories = await sanity.fetch(`*[_type == "blogCategory" && defined(slug.current)] { "slug": slug.current, _updatedAt }`)
-  // Fetch all collections
-  const collections = await sanity.fetch(`*[_type == "collection" && defined(slug.current)] { "slug": slug.current, _updatedAt }`)
 
   const urls = [
     // Static pages
@@ -37,7 +35,6 @@ export default defineSitemapEventHandler(async (event) => {
     { loc: '/about', changefreq: 'monthly', priority: 0.3 },
     { loc: '/privacy', changefreq: 'monthly', priority: 0.1 },
     { loc: '/terms', changefreq: 'monthly', priority: 0.1 },
-    { loc: '/collections', changefreq: 'weekly', priority: 0.5 },
 
     // Dynamic items (skills)
     ...items.map((item: any) => ({
@@ -77,14 +74,6 @@ export default defineSitemapEventHandler(async (event) => {
       lastmod: cat._updatedAt,
       changefreq: 'weekly' as const,
       priority: 0.4,
-    })),
-
-    // Dynamic collections
-    ...collections.map((col: any) => ({
-      loc: `/collection/${col.slug}`,
-      lastmod: col._updatedAt,
-      changefreq: 'weekly' as const,
-      priority: 0.5,
     })),
   ]
 
