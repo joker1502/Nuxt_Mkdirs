@@ -43,9 +43,11 @@ export default defineNuxtConfig({
   },
 
   // Sanity configuration
-  // projectId and dataset are read from sanity.config.ts automatically
   sanity: {
     useCdn: false,
+    projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || '',
+    dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || 'production',
+    apiVersion: '2024-01-01',
   },
 
   colorMode: {
