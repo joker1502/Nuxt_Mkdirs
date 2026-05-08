@@ -33,7 +33,7 @@ const currentSlug = computed(() => {
     <!-- Desktop View -->
     <LayoutContainer class="hidden md:block">
       <div class="flex items-center justify-center">
-        <div class="h-9 overflow-x-auto rounded-full border bg-background p-1 flex gap-1">
+        <div class="flex-wrap rounded-full border bg-background p-2 flex gap-2 justify-center">
           <!-- All button -->
           <NuxtLink
             :to="urlPrefix"
