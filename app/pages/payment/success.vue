@@ -30,7 +30,7 @@ onMounted(async () => {
 });
 
 useSeoMeta({
-  title: 'Payment Successful - Directory Template',
+  title: 'Payment Successful | Top AI Skills',
   description: 'Your payment was successful.',
 });
 </script>

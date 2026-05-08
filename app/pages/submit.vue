@@ -33,7 +33,7 @@ const tags = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Submit your product (1/3) - Directory Template',
+  title: 'Submit your product (1/3) | Top AI Skills',
   description: 'Submit your product – Enter product details.',
 });
 </script>

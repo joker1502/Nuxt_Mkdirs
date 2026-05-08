@@ -87,8 +87,11 @@ const tags = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Home - Top AI Skills Directory',
-  description: 'Discover the best tools, products, and resources for your next project.',
+  title: 'Top AI Skills - AI Tools Directory &amp; Skill Resources',
+  description: 'Discover the best AI tools, skills, and resources. Curated directory of top AI products and services to boost your productivity.',
+  ogTitle: 'Top AI Skills - AI Tools Directory &amp; Skill Resources',
+  ogDescription: 'Discover the best AI tools, skills, and resources. Curated directory of top AI products and services to boost your productivity.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

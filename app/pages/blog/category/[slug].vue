@@ -50,8 +50,11 @@ const posts = computed(() => {
 const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: () => `${currentCategory.value?.name || 'Category'} - Blog - Directory Template`,
-  description: () => `Read blog posts about ${currentCategory.value?.name || 'this category'}.`,
+  title: () => `${currentCategory.value?.name || 'Category'} - Blog | Top AI Skills`,
+  description: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
+  ogTitle: () => `${currentCategory.value?.name || 'Category'} - Blog | Top AI Skills`,
+  ogDescription: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
+  twitterCard: 'summary_large_image',
 });
 </script>
 

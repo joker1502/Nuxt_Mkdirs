@@ -25,7 +25,7 @@ const submissions = computed(() => submissionsData.value?.submissions || []);
 const totalPages = computed(() => submissionsData.value?.totalPages || 1);
 
 useSeoMeta({
-  title: 'Dashboard - Directory Template',
+  title: 'Dashboard | Top AI Skills',
   description: 'Overview of submissions',
 });
 </script>

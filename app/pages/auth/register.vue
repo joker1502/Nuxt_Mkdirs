@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Register - Directory Template',
+  title: 'Register | Top AI Skills',
   description: 'Create an account to get started',
 });
 </script>

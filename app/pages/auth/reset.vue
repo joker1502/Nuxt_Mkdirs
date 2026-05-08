@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Reset Password',
+  title: 'Reset Password | Top AI Skills',
 });
 
 const isLoading = ref(false);

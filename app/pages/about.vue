@@ -2,8 +2,8 @@
 import { siteConfig } from '~/config/site';
 
 useSeoMeta({
-  title: 'About Us | Directory',
-  description: 'Learn more about our directory and mission.',
+  title: 'About Us | Top AI Skills',
+  description: 'Learn more about Top AI Skills - the ultimate directory of AI tools and resources.',
 });
 </script>
 

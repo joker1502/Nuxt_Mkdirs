@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Login - Directory Template',
+  title: 'Login | Top AI Skills',
   description: 'Login to your account',
 });
 </script>

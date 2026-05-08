@@ -2,8 +2,8 @@
 import { siteConfig } from '~/config/site';
 
 useSeoMeta({
-  title: 'Privacy Policy | Directory',
-  description: 'Our privacy policy and how we handle your data.',
+  title: 'Privacy Policy | Top AI Skills',
+  description: 'Top AI Skills privacy policy - how we handle your data and protect your privacy.',
 });
 </script>
 

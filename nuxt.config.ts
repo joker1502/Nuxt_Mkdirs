@@ -34,7 +34,18 @@ export default defineNuxtConfig({
       '/dashboard/**',
       '/studio/**',
       '/auth/**',
+      '/settings/**',
+      '/payment/**',
+      '/publish/**',
     ],
+    siteUrl: 'https://topaiskills.com',
+    discoverImages: true,
+    // Dynamic URLs from sanity data
+    sources: [
+      '/api/__sitemap__/urls',
+    ],
+    // How often to crawl for dynamic URLs
+    autoLastmod: true,
   },
 
   hub: {
@@ -113,7 +124,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'Home - Top AI Skills Directory',
+      title: 'Top AI Skills - AI Tools Directory & Skill Resources',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

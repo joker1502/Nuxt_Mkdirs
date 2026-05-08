@@ -46,8 +46,8 @@ const items = computed(() => {
 const totalPages = computed(() => collectionData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: () => `${collection.value?.name || 'Collection'} | Directory`,
-  description: () => collection.value?.description || 'View this collection.',
+  title: () => `${collection.value?.name || 'Collection'} | Top AI Skills`,
+  description: () => collection.value?.description || 'View this collection on Top AI Skills.',
 });
 </script>
 

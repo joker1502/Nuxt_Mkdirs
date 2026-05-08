@@ -40,8 +40,11 @@ const relatedPosts = computed(() => {
 });
 
 useSeoMeta({
-  title: () => `${post.value?.title || 'Blog Post'} | Directory`,
-  description: () => post.value?.excerpt || 'Read this blog post.',
+  title: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
+  description: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
+  ogTitle: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
+  ogDescription: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

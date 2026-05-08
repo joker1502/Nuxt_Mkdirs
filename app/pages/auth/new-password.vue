@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Set New Password',
+  title: 'Set New Password | Top AI Skills',
 });
 
 const route = useRoute();

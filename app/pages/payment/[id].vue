@@ -146,7 +146,7 @@ const imageUrl = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Submit your product (2/3) - Directory Template',
+  title: 'Submit your product (2/3) | Top AI Skills',
   description: 'Submit your product – Choose pricing plan.',
 });
 </script>

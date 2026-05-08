@@ -49,8 +49,11 @@ const itemLink = computed(() => {
 const relatedItems = computed(() => item.value?.related || []);
 
 useSeoMeta({
-  title: () => `${item.value?.name || 'Item'} | Directory`,
-  description: () => item.value?.description || 'View this item.',
+  title: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
+  description: () => item.value?.description || 'View this AI skill and learn more.',
+  ogTitle: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
+  ogDescription: () => item.value?.description || 'View this AI skill and learn more.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

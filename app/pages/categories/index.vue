@@ -70,8 +70,11 @@ const sponsorItem = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Category - Directory Template',
-  description: 'Explore by category.',
+  title: 'Categories | Top AI Skills',
+  description: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
+  ogTitle: 'Categories | Top AI Skills',
+  ogDescription: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

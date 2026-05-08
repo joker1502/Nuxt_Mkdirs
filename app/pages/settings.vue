@@ -56,7 +56,7 @@ async function onSubmit() {
 }
 
 useSeoMeta({
-  title: 'Settings - Directory Template',
+  title: 'Settings | Top AI Skills',
   description: 'Manage your account settings.',
 });
 </script>

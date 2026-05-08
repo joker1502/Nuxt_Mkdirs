@@ -57,8 +57,15 @@ const items = computed(() => {
 const totalPages = computed(() => categoryData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: () => `${currentCategory.value?.name || 'Category'} - Directory Template`,
-  description: () => `Explore items in ${currentCategory.value?.name || 'this category'}.`,
+  title: () => `${currentCategory.value?.name || 'Category'} | Top AI Skills`,
+  description: () => currentCategory.value?.name
+    ? `Browse the best ${currentCategory.value.name} AI tools and skills. Discover top resources in this category.`
+    : 'Browse AI tools and skills by category.',
+  ogTitle: () => `${currentCategory.value?.name || 'Category'} | Top AI Skills`,
+  ogDescription: () => currentCategory.value?.name
+    ? `Browse the best ${currentCategory.value.name} AI tools and skills.`
+    : 'Browse AI tools and skills by category.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

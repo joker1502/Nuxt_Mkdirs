@@ -57,8 +57,15 @@ const items = computed(() => {
 const totalPages = computed(() => tagData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: () => `${currentTag.value?.name || 'Tag'} - Directory Template`,
-  description: () => `Explore items tagged with ${currentTag.value?.name || 'this tag'}.`,
+  title: () => `${currentTag.value?.name || 'Tag'} | Top AI Skills`,
+  description: () => currentTag.value?.name
+    ? `Explore AI tools and skills tagged with "${currentTag.value.name}". Discover top resources.`
+    : 'Explore AI tools and skills by tag.',
+  ogTitle: () => `${currentTag.value?.name || 'Tag'} | Top AI Skills`,
+  ogDescription: () => currentTag.value?.name
+    ? `Explore AI tools and skills tagged with "${currentTag.value.name}".`
+    : 'Explore AI tools and skills by tag.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

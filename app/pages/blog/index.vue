@@ -44,8 +44,11 @@ const posts = computed(() => {
 const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: 'Blog - Directory Template',
-  description: 'Read our latest blog posts.',
+  title: 'Blog | Top AI Skills',
+  description: 'Read the latest articles, tutorials, and insights about AI tools and skills.',
+  ogTitle: 'Blog | Top AI Skills',
+  ogDescription: 'Read the latest articles, tutorials, and insights about AI tools and skills.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

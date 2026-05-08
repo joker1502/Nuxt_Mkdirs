@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: 'Verify Email',
+  title: 'Verify Email | Top AI Skills',
 });
 
 const route = useRoute();

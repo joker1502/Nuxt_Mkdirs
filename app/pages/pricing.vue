@@ -77,7 +77,7 @@ const faqItems = [
 ];
 
 useSeoMeta({
-  title: 'Pricing - Directory Template',
+  title: 'Pricing | Top AI Skills',
   description: 'Choose a pricing plan for submitting your product.',
 });
 </script>

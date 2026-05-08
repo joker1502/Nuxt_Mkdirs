@@ -72,7 +72,7 @@ function handleShare() {
 }
 
 useSeoMeta({
-  title: 'Submit your product (3/3) - Directory Template',
+  title: 'Submit your product (3/3) | Top AI Skills',
   description: 'Submit your product – Review and publish.',
 });
 </script>

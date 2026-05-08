@@ -30,8 +30,8 @@ const collections = computed(() => {
 const totalPages = computed(() => collectionsData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: 'Collections | Directory',
-  description: 'Curated collections of the best tools and resources.',
+  title: 'Collections | Top AI Skills',
+  description: 'Curated collections of the best AI tools and resources.',
 });
 </script>
 

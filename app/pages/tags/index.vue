@@ -65,8 +65,11 @@ const sponsorItem = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Tag - Directory Template',
-  description: 'Explore by tags.',
+  title: 'Tags | Top AI Skills',
+  description: 'Browse AI tools and skills by tag. Find exactly what you need with our tag-based exploration.',
+  ogTitle: 'Tags | Top AI Skills',
+  ogDescription: 'Browse AI tools and skills by tag. Find exactly what you need with our tag-based exploration.',
+  twitterCard: 'summary_large_image',
 });
 </script>
 

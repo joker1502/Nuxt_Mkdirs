@@ -2,8 +2,8 @@
 import { siteConfig } from '~/config/site';
 
 useSeoMeta({
-  title: 'Terms of Service | Directory',
-  description: 'Our terms of service and usage guidelines.',
+  title: 'Terms of Service | Top AI Skills',
+  description: 'Top AI Skills terms of service - guidelines for using our AI directory platform.',
 });
 </script>
 
