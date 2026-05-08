@@ -7,13 +7,9 @@ export default defineNuxtConfig({
   css: ['./app/assets/css/main.css'],
   devtools: { enabled: true },
 
-  // Cloudflare Workers configuration for NuxtHub v0.10
+  // Cloudflare Pages configuration
   nitro: {
-    preset: 'cloudflare_module',
-    cloudflare: {
-      deployConfig: true,
-      nodeCompat: true,
-    },
+    preset: 'cloudflare_pages',
   },
   
   modules: [
