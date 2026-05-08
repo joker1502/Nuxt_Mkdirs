@@ -43,14 +43,14 @@ function handleSortChange(value: string) {
     <LayoutContainer class="hidden md:block">
       <div class="flex items-center justify-between gap-8">
         <!-- Category List with horizontal scroll -->
-        <div class="flex-1 overflow-x-auto pb-4">
+        <div class="flex-1 overflow-x-auto pb-2">
           <ul class="flex gap-x-2">
             <li>
               <NuxtLink :to="urlPrefix">
                 <UiButton
                   :variant="!currentSlug ? 'default' : 'outline'"
                   size="sm"
-                  class="px-3 py-3"
+                  class="px-3 py-3 shrink-0"
                 >
                   All
                 </UiButton>
@@ -61,7 +61,7 @@ function handleSortChange(value: string) {
                 <UiButton
                   :variant="currentSlug === category.slug ? 'default' : 'outline'"
                   size="sm"
-                  class="px-3 py-3"
+                  class="px-3 py-3 shrink-0"
                 >
                   {{ category.name }}
                 </UiButton>

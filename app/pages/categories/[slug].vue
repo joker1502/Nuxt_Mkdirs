@@ -87,7 +87,7 @@ useSeoMeta({
       <div class="w-full flex flex-col items-center justify-center gap-8">
         <SharedHeaderSection
           label="Category"
-          title="Explore by categories"
+          :title="currentCategory?.name || 'Explore by categories'"
         />
 
         <!-- Category Filter -->

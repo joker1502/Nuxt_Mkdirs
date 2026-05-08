@@ -33,12 +33,12 @@ const currentSlug = computed(() => {
     <!-- Desktop View -->
     <LayoutContainer class="hidden md:block">
       <div class="flex items-center justify-center">
-        <div class="h-9 overflow-hidden rounded-full border bg-background p-1 flex">
+        <div class="h-9 overflow-x-auto rounded-full border bg-background p-1 flex gap-1">
           <!-- All button -->
           <NuxtLink
             :to="urlPrefix"
             :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors',
+              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors whitespace-nowrap shrink-0',
               !currentSlug
                 ? 'bg-primary text-primary-foreground'
                 : 'text-muted-foreground hover:bg-muted'
@@ -53,7 +53,7 @@ const currentSlug = computed(() => {
             :key="category._id"
             :to="`${urlPrefix}/category/${category.slug}`"
             :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors',
+              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors whitespace-nowrap shrink-0',
               currentSlug === category.slug
                 ? 'bg-primary text-primary-foreground'
                 : 'text-muted-foreground hover:bg-muted'

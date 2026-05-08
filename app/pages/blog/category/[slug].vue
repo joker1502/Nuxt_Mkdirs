@@ -67,7 +67,7 @@ useSeoMeta({
     <div class="mt-8 w-full flex flex-col items-center justify-center gap-8">
       <SharedHeaderSection
         label="Blog"
-        title="Read our latest blog posts"
+        :title="currentCategory?.name || 'Read our latest blog posts'"
       />
 
       <!-- Blog Category Filter -->
