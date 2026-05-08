@@ -1,18 +1,26 @@
 <script setup lang="ts">
 const route = useRoute();
 
+// Fetch tags from Sanity
+const { data: tagsData } = await useFetch('/api/tags');
+
+const tags = computed(() => {
+  if (!tagsData.value) return [];
+  return tagsData.value.map((tag: any) => ({
+    _id: tag._id,
+    name: tag.name,
+    slug: tag.slug?.current || tag.slug,
+    itemCount: 0,
+  }));
+});
+
 // Reactive query params for items API
 const itemsQuery = computed(() => ({
   limit: 12,
-  q: route.query.q || undefined,
-  category: route.query.category || undefined,
-  tag: route.query.tag || undefined,
-  sort: route.query.sort || undefined,
-  f: route.query.f || undefined,
   page: route.query.page || undefined,
 }));
 
-// Fetch items from Sanity - reactive to URL changes
+// Fetch items from Sanity
 const { data: itemsData } = await useFetch('/api/items', {
   query: itemsQuery,
   watch: [itemsQuery],
@@ -56,51 +64,50 @@ const sponsorItem = computed(() => {
   };
 });
 
-// Fetch tags from Sanity
-const { data: tagsData } = await useFetch('/api/tags');
-
-const tags = computed(() => {
-  if (!tagsData.value) return [];
-  return tagsData.value.map((tag: any) => ({
-    value: tag.slug?.current || tag.slug,
-    label: tag.name,
-  }));
-});
-
-// Fetch categories from Sanity
-const { data: categoriesData } = await useFetch('/api/categories');
-
-const categories = computed(() => {
-  if (!categoriesData.value) return [];
-  return categoriesData.value.map((cat: any) => ({
-    value: cat.slug?.current || cat.slug,
-    label: cat.name,
-  }));
-});
-
 useSeoMeta({
-  title: 'Home 3 - Directory Template',
-  description: 'Alternative home page layout with sponsor hero and filter.',
+  title: 'Tag - Directory Template',
+  description: 'Explore by tags.',
 });
 </script>
 
 <template>
-  <LayoutContainer class="mt-12 mb-16 flex flex-col gap-12">
-    <!-- Hero with Sponsor -->
-    <HomeHeroSponsor :sponsor-item="sponsorItem" url-prefix="/home3" />
+  <div class="mb-16">
+    <!-- Header -->
+    <div class="mt-8">
+      <div class="w-full flex flex-col items-center justify-center gap-8">
+        <SharedHeaderSection
+          label="Tag"
+          title="Explore by tags"
+        />
 
-    <!-- Filter + Item Grid -->
-    <div class="flex flex-col gap-8">
-      <!-- Search Filter -->
-      <HomeSearchFilter :tags="tags" :categories="categories" url-prefix="/home3" />
+        <!-- Tag Filter -->
+        <div class="w-full">
+          <TagFilter :tags="tags" />
+        </div>
+      </div>
+    </div>
 
-      <!-- Item Grid -->
+    <!-- Results -->
+    <LayoutContainer class="mt-4">
+      <!-- Empty state -->
       <SharedEmptyState v-if="items.length === 0" />
-      
+
+      <!-- Items grid with sponsor -->
       <template v-else>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ItemCard
-            v-for="item in items"
+          <!-- First 2 items -->
+          <ItemCard2
+            v-for="item in items.slice(0, 2)"
+            :key="item._id"
+            :item="item"
+          />
+          
+          <!-- Sponsor card at position 3 -->
+          <ItemSponsorItemCard v-if="sponsorItem" :item="sponsorItem" />
+          
+          <!-- Rest of items -->
+          <ItemCard2
+            v-for="item in items.slice(2)"
             :key="item._id"
             :item="item"
           />
@@ -108,12 +115,9 @@ useSeoMeta({
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination route-prefix="/home3" :total-pages="totalPages" />
+          <SharedPagination route-prefix="/tags" :total-pages="totalPages" />
         </div>
       </template>
-    </div>
-
-    <!-- Newsletter -->
-    <HomeNewsletter />
-  </LayoutContainer>
+    </LayoutContainer>
+  </div>
 </template>

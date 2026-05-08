@@ -67,7 +67,7 @@ useSeoMeta({
             <span>/</span>
             <NuxtLink 
               v-if="item.categories?.[0]" 
-              :to="`/category/${item.categories[0].slug?.current}`"
+              :to="`/categories/${item.categories[0].slug?.current}`"
               class="hover:text-foreground"
             >
               {{ item.categories[0].name }}
@@ -190,7 +190,7 @@ useSeoMeta({
               <ul class="flex flex-wrap gap-4">
                 <li v-for="category in item.categories" :key="category._id">
                   <NuxtLink
-                    :to="`/category/${category.slug?.current}`"
+                    :to="`/categories/${category.slug?.current}`"
                     class="text-sm link-underline"
                   >
                     {{ category.name }}

@@ -114,7 +114,7 @@ const imageUrl = computed(() => {
         </div>
 
         <!-- Name -->
-        <NuxtLink :to="`/item/${item.slug}`" class="min-w-0">
+        <NuxtLink :to="`/skill/${item.slug}`" class="min-w-0">
           <h3
             :class="cn(
               'text-xl font-semibold truncate overflow-hidden text-ellipsis',
@@ -130,7 +130,7 @@ const imageUrl = computed(() => {
           <NuxtLink
             v-for="category in item.categories"
             :key="category._id"
-            :to="`/category/${category.slug}`"
+            :to="`/categories/${category.slug}`"
             :class="cn(
               'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
               imageUrl
@@ -146,7 +146,7 @@ const imageUrl = computed(() => {
       <!-- Bottom section: Description + Tags -->
       <div class="mt-auto pt-4">
         <!-- Description -->
-        <NuxtLink :to="`/item/${item.slug}`" class="block cursor-pointer">
+        <NuxtLink :to="`/skill/${item.slug}`" class="block cursor-pointer">
           <p
             :class="cn(
               'text-sm line-clamp-2 leading-relaxed',

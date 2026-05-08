@@ -81,7 +81,7 @@ const imageUrl = computed(() => {
       </div>
 
       <!-- Center content -->
-      <NuxtLink :to="`/item/${item.slug}`" class="flex flex-col gap-4 group">
+      <NuxtLink :to="`/skill/${item.slug}`" class="flex flex-col gap-4 group">
         <div class="px-4 flex flex-col gap-4">
           <div class="flex items-center justify-between gap-4">
             <h3

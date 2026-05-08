@@ -76,7 +76,7 @@ const bgImageUrl = computed(() => {
             {{ item.name.charAt(0).toUpperCase() }}
           </div>
 
-          <NuxtLink :to="`/item/${item.slug}`" class="min-w-0 flex-1">
+          <NuxtLink :to="`/skill/${item.slug}`" class="min-w-0 flex-1">
             <h3
               :class="cn(
                 'text-xl font-semibold truncate overflow-hidden text-ellipsis',
@@ -95,7 +95,7 @@ const bgImageUrl = computed(() => {
             <NuxtLink
               v-for="category in item.categories"
               :key="category._id"
-              :to="`/category/${category.slug}`"
+              :to="`/categories/${category.slug}`"
               :class="cn(
                 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
                 bgImageUrl
@@ -108,7 +108,7 @@ const bgImageUrl = computed(() => {
           </div>
           <div v-else-if="item.category" class="flex flex-wrap gap-2 items-center">
             <NuxtLink
-              :to="`/category/${item.category}`"
+              :to="`/categories/${item.category}`"
               :class="cn(
                 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
                 bgImageUrl
@@ -125,7 +125,7 @@ const bgImageUrl = computed(() => {
       <!-- Bottom section: Description + Tags -->
       <div class="mt-auto pt-4">
         <!-- Description -->
-        <NuxtLink :to="`/item/${item.slug}`" class="block cursor-pointer">
+        <NuxtLink :to="`/skill/${item.slug}`" class="block cursor-pointer">
           <p
             :class="cn(
               'text-sm line-clamp-2 leading-relaxed',

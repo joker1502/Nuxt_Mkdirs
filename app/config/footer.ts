@@ -5,14 +5,13 @@ export const footerConfig: FooterConfig = {
     {
       title: "Explore",
       items: [
-        { title: "Home", href: "/" },
-        { title: "Skills", href: "/category" },
-        { title: "Blog", href: "/blog" },
-        { title: "Search", href: "/search" },
+        { title: "Skills", href: "/categories" },
+        { title: "Tutorials", href: "/blog" },
+        { title: "Tags", href: "/tags" },
       ],
     },
     {
-      title: "Company",
+      title: "About",
       items: [
         { title: "About Us", href: "/about" },
         { title: "Privacy Policy", href: "/privacy" },

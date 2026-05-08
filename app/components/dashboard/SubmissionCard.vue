@@ -99,7 +99,7 @@ function getStatusColor(status: string) {
           <!-- Title -->
           <NuxtLink
             v-if="publishable && item.publishDate"
-            :to="`/item/${item.slug}`"
+            :to="`/skill/${item.slug}`"
           >
             <h3 class="text-2xl inline-block hover:underline">{{ item.name }}</h3>
           </NuxtLink>

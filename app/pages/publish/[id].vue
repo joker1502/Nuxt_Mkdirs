@@ -31,7 +31,7 @@ const imageUrl = computed(() => {
 const itemUrl = computed(() => {
   if (!item.value?.slug) return '';
   const slug = item.value.slug?.current || item.value.slug;
-  return `${config.public.appUrl}/item/${slug}`;
+  return `${config.public.appUrl}/skill/${slug}`;
 });
 
 // Publishing state
@@ -128,7 +128,7 @@ useSeoMeta({
             <p class="text-muted-foreground mb-8">Your product is now live and visible to everyone.</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <NuxtLink :to="`/item/${item.slug?.current || item.slug}`">
+              <NuxtLink :to="`/skill/${item.slug?.current || item.slug}`">
                 <UiButton class="gap-2">
                   <ExternalLink class="w-4 h-4" />
                   View Product

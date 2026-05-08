@@ -7,7 +7,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  urlPrefix: '/category',
+  urlPrefix: '/categories',
 });
 
 const route = useRoute();
