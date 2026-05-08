@@ -45,9 +45,12 @@ export default defineNuxtConfig({
   // Sanity configuration
   sanity: {
     useCdn: false,
-    projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || '',
-    dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || 'production',
+    projectId: 'isvdg9tz',
+    dataset: 'production',
     apiVersion: '2024-01-01',
+    token: process.env.NUXT_SANITY_API_TOKEN,
+    // token is only needed for server-side operations
+    // It's a private env var that IS available at build time
   },
 
   colorMode: {
