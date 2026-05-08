@@ -65,6 +65,9 @@ useSeoMeta({
   ogDescription: () => currentTag.value?.name
     ? `Explore AI tools and skills tagged with "${currentTag.value.name}".`
     : 'Explore AI tools and skills by tag.',
+  keywords: () => currentTag.value?.name
+    ? `${currentTag.value.name}, AI tools, AI skills, tagged ${currentTag.value.name}`
+    : 'AI tools, AI skills, AI directory',
   twitterCard: 'summary_large_image',
 });
 </script>

@@ -54,6 +54,9 @@ useSeoMeta({
   description: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
   ogTitle: () => `${currentCategory.value?.name || 'Category'} - Blog | Top AI Skills`,
   ogDescription: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
+  keywords: () => currentCategory.value?.name
+    ? `${currentCategory.value.name}, AI tutorials, AI blog, ${currentCategory.value.name} guide`
+    : 'AI tutorials, AI blog',
   twitterCard: 'summary_large_image',
 });
 </script>

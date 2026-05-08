@@ -48,11 +48,25 @@ const itemLink = computed(() => {
 // Related items
 const relatedItems = computed(() => item.value?.related || []);
 
+// Generate keywords from item data
+const keywords = computed(() => {
+  if (!item.value) return 'AI skills, AI tools';
+  const parts = [item.value.name];
+  if (item.value.categories?.length) {
+    parts.push(...item.value.categories.map((c: any) => c.name));
+  }
+  if (item.value.tags?.length) {
+    parts.push(...item.value.tags.map((t: any) => t.name));
+  }
+  return [...new Set(parts)].join(', ');
+});
+
 useSeoMeta({
   title: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
   description: () => item.value?.description || 'View this AI skill and learn more.',
   ogTitle: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
   ogDescription: () => item.value?.description || 'View this AI skill and learn more.',
+  keywords: () => keywords.value,
   twitterCard: 'summary_large_image',
 });
 </script>

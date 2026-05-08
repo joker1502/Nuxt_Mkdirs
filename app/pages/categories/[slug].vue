@@ -65,6 +65,9 @@ useSeoMeta({
   ogDescription: () => currentCategory.value?.name
     ? `Browse the best ${currentCategory.value.name} AI tools and skills.`
     : 'Browse AI tools and skills by category.',
+  keywords: () => currentCategory.value?.name
+    ? `${currentCategory.value.name}, AI tools, AI skills, best ${currentCategory.value.name} tools`
+    : 'AI tools, AI skills, AI directory',
   twitterCard: 'summary_large_image',
 });
 </script>

@@ -39,11 +39,22 @@ const relatedPosts = computed(() => {
   }));
 });
 
+// Generate keywords from post data
+const keywords = computed(() => {
+  if (!post.value) return 'AI blog, AI tutorials, AI skills';
+  const parts = [post.value.title];
+  if (post.value.categories?.length) {
+    parts.push(...post.value.categories.map((c: any) => (typeof c === 'string' ? c : c.name)));
+  }
+  return [...new Set(parts)].join(', ');
+});
+
 useSeoMeta({
   title: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
   description: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
   ogTitle: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
   ogDescription: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
+  keywords: () => keywords.value,
   twitterCard: 'summary_large_image',
 });
 </script>
