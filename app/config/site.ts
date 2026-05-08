@@ -31,14 +31,14 @@ export const siteConfig: SiteConfig = {
   
   // SEO keywords - helps search engines understand your content
   keywords: [
+    "Top AI Skills",
+    "AI Skills",
+    "Best AI Skills",
     "AI Tools",
     "AI Directory",
-    "AI Skills",
     "AI Agents",
-    "Top AI",
-    "AI Reviews",
-    "AI Software",
-    "Best AI Tools",
+    "AI coding skills",
+    "AI writing skills",
   ],
   
   // Author name - appears in meta tags

@@ -126,11 +126,18 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'Top AI Skills - AI Tools Directory & Skill Resources',
+      title: 'Top AI Skills - Best AI Skills Directory & Resources',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Discover and compare the best AI skills, AI agents, and AI tools. Top AI Skills curates AI writing skills, AI coding skills, AI image generation, and more — all in one place.' },
+        { name: 'keywords', content: 'Top AI Skills, AI Skills, Best AI Skills, AI tools, AI directory' },
+        { name: 'robots', content: 'index, follow' },
+        { property: 'og:site_name', content: 'Top AI Skills' },
+        { property: 'og:locale', content: 'en_US' },
+        { property: 'og:image', content: 'https://topaiskills.com/logo.png' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@zhirentegong' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },

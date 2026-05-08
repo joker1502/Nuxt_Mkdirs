@@ -87,11 +87,64 @@ const tags = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Top AI Skills - AI Tools Directory &amp; Skill Resources',
-  description: 'Discover the best AI tools, skills, and resources. Curated directory of top AI products and services to boost your productivity.',
-  ogTitle: 'Top AI Skills - AI Tools Directory &amp; Skill Resources',
-  ogDescription: 'Discover the best AI tools, skills, and resources. Curated directory of top AI products and services to boost your productivity.',
+  title: 'Top AI Skills - Best AI Skills Directory &amp; Resources',
+  description: 'Discover the best AI skills, tools, and resources. Top AI Skills curates AI coding skills, AI writing skills, AI image generation, and more — all in one place.',
+  ogTitle: 'Top AI Skills - Best AI Skills Directory &amp; Resources',
+  ogDescription: 'Discover the best AI skills, tools, and resources. Top AI Skills curates AI coding skills, AI writing skills, AI image generation, and more — all in one place.',
+  ogImage: 'https://topaiskills.com/logo.png',
+  ogUrl: 'https://topaiskills.com',
+  ogSiteName: 'Top AI Skills',
+  ogLocale: 'en_US',
+  ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  keywords: 'Top AI Skills, AI Skills, Best AI Skills, AI tools, AI directory, AI coding skills, AI writing skills',
+  robots: 'index, follow',
+});
+
+// Inject JSON-LD structured data for GEO (WebSite + Organization)
+onMounted(() => {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': 'https://topaiskills.com/#website',
+        url: 'https://topaiskills.com',
+        name: 'Top AI Skills',
+        description: 'Discover and compare the best AI skills, AI agents, and AI tools. Curated directory for developers and creators.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://topaiskills.com?q={search_term_string}',
+          },
+          'query-input': 'required name=search_term_string',
+        },
+        publisher: {
+          '@type': 'Organization',
+          '@id': 'https://topaiskills.com/#organization',
+          name: 'Top AI Skills',
+          url: 'https://topaiskills.com',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://topaiskills.com/logo.png',
+          },
+          contactPoint: {
+            '@type': 'ContactPoint',
+            email: 'hello@topaiskills.com',
+            contactType: 'customer support',
+          },
+        },
+      },
+    ],
+  };
+  const script = document.createElement('script');
+  script.setAttribute('type', 'application/ld+json');
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
 });
 </script>
 
