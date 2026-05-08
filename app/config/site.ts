@@ -23,11 +23,11 @@ export const siteConfig: SiteConfig = {
   name: "Top AI Skills",
   
   // Short tagline - used in hero sections and meta descriptions
-  tagline: "Discover & Compare the Best AI Tools",
-  
+  tagline: "Curated directory of the best AI agents, AI tools, and AI skills. Expert-reviewed and updated regularly to help developers and creators discover top AI resources.",
+
   // Full description - used for SEO meta description
   description:
-    "Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators. Find, compare, and choose the perfect AI tool for every task.",
+    "Discover and compare the best AI skills, AI agents, and AI tools. Top AI Skills curates AI writing skills, AI coding skills, AI image generation, and more — all in one place.",
   
   // SEO keywords - helps search engines understand your content
   keywords: [
@@ -83,7 +83,7 @@ export const siteConfig: SiteConfig = {
   
   links: {
     twitter: "https://x.com/zhirentegong",
-    // github: "https://github.com/your-repo",
+    github: "https://github.com",
     // youtube: "https://youtube.com/@your-channel",
   },
   

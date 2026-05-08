@@ -8,14 +8,19 @@ export const marketingConfig: MarketingConfig = {
       icon: "home",
     },
     {
-      title: "Category",
+      title: "Skill",
       href: "/category",
       icon: "category",
     },
     {
-      title: "Blog",
+      title: "Tutorials",
       href: "/blog",
       icon: "blog",
+    },
+    {
+      title: "Contact",
+      href: "/contact",
+      icon: "search",
     },
     {
       title: "Search",

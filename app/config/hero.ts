@@ -2,11 +2,11 @@ import type { HeroConfig } from '~/types';
 
 export const heroConfig: HeroConfig = {
   title: {
-    first: "Discover the Best",
-    second: "AI Tools for Every Task",
+    first: "The #1 AI Skills",
+    second: "Directory",
   },
   subtitle:
-    "Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators.",
+    "Discover and compare the best AI skills, AI agents, and AI tools. Top AI Skills curates AI writing skills, AI coding skills, AI image generation, and more — all in one place.",
   label: {
     text: "Follow us on",
     href: "https://x.com/zhirentegong",

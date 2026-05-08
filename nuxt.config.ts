@@ -113,11 +113,11 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'Top AI Skills - Discover & Compare the Best AI Tools',
+      title: 'Home - Top AI Skills Directory',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators.' },
+        { name: 'description', content: 'Discover and compare the best AI skills, AI agents, and AI tools. Top AI Skills curates AI writing skills, AI coding skills, AI image generation, and more — all in one place.' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
