@@ -65,10 +65,18 @@ useSeoMeta({
   ogDescription: () => currentCategory.value?.name
     ? `Browse the best ${currentCategory.value.name} AI tools and skills.`
     : 'Browse AI tools and skills by category.',
+  ogImage: 'https://topaiskills.com/logo.png',
+  ogUrl: () => `https://topaiskills.com/categories/${slug.value}`,
+  ogSiteName: 'Top AI Skills',
+  ogLocale: 'en_US',
+  ogType: 'website',
   keywords: () => currentCategory.value?.name
     ? `${currentCategory.value.name}, AI tools, AI skills, best ${currentCategory.value.name} tools`
     : 'AI tools, AI skills, AI directory',
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 </script>
 

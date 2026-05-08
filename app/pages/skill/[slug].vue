@@ -66,8 +66,39 @@ useSeoMeta({
   description: () => item.value?.description || 'View this AI skill and learn more.',
   ogTitle: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
   ogDescription: () => item.value?.description || 'View this AI skill and learn more.',
+  ogImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
+  ogUrl: () => `https://topaiskills.com/skill/${slug.value}`,
+  ogSiteName: 'Top AI Skills',
+  ogLocale: 'en_US',
+  ogType: 'article',
   keywords: () => keywords.value,
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
+});
+
+// Inject BreadcrumbList JSON-LD for EEAT
+onMounted(() => {
+  if (!item.value) return;
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://topaiskills.com/' },
+      ...(item.value.categories?.[0] ? [{
+        '@type': 'ListItem', position: 2,
+        name: item.value.categories[0].name,
+        item: `https://topaiskills.com/categories/${item.value.categories[0].slug?.current}`,
+      }] : []),
+      { '@type': 'ListItem', position: item.value.categories?.[0] ? 3 : 2, name: item.value.name, item: `https://topaiskills.com/skill/${slug.value}` },
+    ],
+  };
+  const script = document.createElement('script');
+  script.setAttribute('type', 'application/ld+json');
+  script.textContent = JSON.stringify(breadcrumbSchema);
+  document.head.appendChild(script);
 });
 </script>
 

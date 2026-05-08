@@ -54,8 +54,54 @@ useSeoMeta({
   description: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
   ogTitle: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
   ogDescription: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
+  ogImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
+  ogUrl: () => `https://topaiskills.com/blog/${slug.value}`,
+  ogSiteName: 'Top AI Skills',
+  ogLocale: 'en_US',
+  ogType: 'article',
   keywords: () => keywords.value,
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
+});
+
+// Inject Article JSON-LD for EEAT (author + publisher)
+onMounted(() => {
+  if (!post.value) return;
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `https://topaiskills.com/blog/${slug.value}#article`,
+    headline: post.value.title,
+    description: post.value.excerpt,
+    image: imageUrl.value || 'https://topaiskills.com/logo.png',
+    datePublished: post.value.publishDate || post.value._createdAt,
+    dateModified: post.value._updatedAt || post.value.publishDate || post.value._createdAt,
+    author: {
+      '@type': 'Person',
+      name: post.value.author?.name || 'Top AI Skills Team',
+      url: 'https://topaiskills.com/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      '@id': 'https://topaiskills.com/#organization',
+      name: 'Top AI Skills',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://topaiskills.com/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://topaiskills.com/blog/${slug.value}`,
+    },
+  };
+  const script = document.createElement('script');
+  script.setAttribute('type', 'application/ld+json');
+  script.textContent = JSON.stringify(articleSchema);
+  document.head.appendChild(script);
 });
 </script>
 
