@@ -12,7 +12,7 @@ import type { SiteConfig } from '~/types';
  */
 
 // Your site's base URL (update this for production)
-const SITE_URL = process.env.NUXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const SITE_URL = process.env.NUXT_PUBLIC_APP_URL || 'https://topaiskills.com';
 
 export const siteConfig: SiteConfig = {
   // ============================================
@@ -20,28 +20,29 @@ export const siteConfig: SiteConfig = {
   // ============================================
   
   // Site name - appears in browser tab, SEO, and navigation
-  name: "Nuxt Mkdirs",
+  name: "Top AI Skills",
   
   // Short tagline - used in hero sections and meta descriptions
-  tagline: "The Nuxt.js version of Mkdirs, the best directory website template",
+  tagline: "Discover & Compare the Best AI Tools",
   
   // Full description - used for SEO meta description
   description:
-    "This is a demo site for Nuxt Mkdirs template. Built with Nuxt.js, it offers the same power as the original Mkdirs. Build trending and profitable directory websites in minutes.",
+    "Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators. Find, compare, and choose the perfect AI tool for every task.",
   
   // SEO keywords - helps search engines understand your content
   keywords: [
-    "Directory",
-    "Template",
-    "Boilerplate",
-    "Nuxt.js",
-    "Vue.js",
-    "Tailwindcss",
-    "Mkdirs",
+    "AI Tools",
+    "AI Directory",
+    "AI Skills",
+    "AI Agents",
+    "Top AI",
+    "AI Reviews",
+    "AI Software",
+    "Best AI Tools",
   ],
   
   // Author name - appears in meta tags
-  author: "Mkdirs",
+  author: "Top AI Skills",
   
   // Site URL - used for canonical URLs and Open Graph
   url: SITE_URL,
@@ -64,14 +65,14 @@ export const siteConfig: SiteConfig = {
   // ============================================
   
   // Contact email
-  mail: "pub@nuxt-saas.com",
+  mail: "hello@topaiskills.com",
   
   // ============================================
   // UTM TRACKING
   // ============================================
   
   utm: {
-    source: "nuxt-saas.com",
+    source: "topaiskills.com",
     medium: "referral",
     campaign: "navigation",
   },
@@ -92,8 +93,8 @@ export const siteConfig: SiteConfig = {
   
   seo: {
     // Title template - %s will be replaced with page title
-    // Example: "Home | Nuxt Mkdirs"
-    titleTemplate: "%s | Nuxt Mkdirs",
+    // Example: "Home | Top AI Skills"
+    titleTemplate: "%s | Top AI Skills",
     titleSeparator: " | ",
     
     // Open Graph settings

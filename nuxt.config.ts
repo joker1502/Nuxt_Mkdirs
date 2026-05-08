@@ -112,11 +112,11 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'Nuxt Mkdirs - The Best Directory Website Template for Nuxt',
+      title: 'Top AI Skills - Discover & Compare the Best AI Tools',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'This is the Nuxt.js version of Mkdirs template. The ultimate directory website template built with Nuxt.' },
+        { name: 'description', content: 'Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators.' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },

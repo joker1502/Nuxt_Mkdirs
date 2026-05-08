@@ -12,9 +12,9 @@ import "server-only";
 // }
 
 export const token = assertValue(
-  process.env.SANITY_API_TOKEN,
-  // process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
-  "Missing environment variable: SANITY_API_TOKEN",
+  process.env.NUXT_SANITY_API_TOKEN,
+  // process.env.NUXT_PUBLIC_SANITY_API_TOKEN,
+  "Missing environment variable: NUXT_SANITY_API_TOKEN",
 );
 
 // experimental_taintUniqueValue(

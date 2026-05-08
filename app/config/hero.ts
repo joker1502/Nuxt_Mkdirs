@@ -2,13 +2,13 @@ import type { HeroConfig } from '~/types';
 
 export const heroConfig: HeroConfig = {
   title: {
-    first: "The Best Nuxt.js",
-    second: "Directory Website Template",
+    first: "Discover the Best",
+    second: "AI Tools for Every Task",
   },
   subtitle:
-    "This is a demo directory website built with Nuxt Mkdirs",
+    "Top AI Skills is the #1 AI Skills Directory. Discover the best AI agents, AI tools, and AI skills curated for developers and creators.",
   label: {
-    text: "Introducing Nuxt Mkdirs on",
+    text: "Follow us on",
     href: "https://x.com/zhirentegong",
     icon: "twitter",
   },

@@ -18,13 +18,13 @@ export const apiVersion = "2024-08-01";
  * Importing other npm packages here could lead to needlessly increasing the client bundle size, or end up in a server-only function that don't need it.
  */
 export const dataset = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_DATASET,
-  "Missing environment variable: NEXT_PUBLIC_SANITY_DATASET",
+  process.env.NUXT_PUBLIC_SANITY_DATASET,
+  "Missing environment variable: NUXT_PUBLIC_SANITY_DATASET",
 );
 
 export const projectId = assertValue(
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  "Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID",
+  process.env.NUXT_PUBLIC_SANITY_PROJECT_ID,
+  "Missing environment variable: NUXT_PUBLIC_SANITY_PROJECT_ID",
 );
 
 /**
