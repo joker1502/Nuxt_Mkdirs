@@ -121,10 +121,10 @@ function isAllSelected() {
               v-for="category in group.categories"
               :key="category._id"
               :class="cn(
-                'w-full px-6 py-2 rounded-md text-sm font-medium text-left transition-colors',
+                'w-full px-3 py-3 rounded-md text-sm font-medium text-left transition-colors',
                 selectedCategory === category.slug
                   ? 'bg-primary text-primary-foreground'
-                  : 'hover:bg-muted text-muted-foreground hover:text-foreground'
+                  : 'hover:bg-muted'
               )"
               @click="handleCategoryClick(category.slug)"
             >

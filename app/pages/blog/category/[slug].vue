@@ -58,6 +58,10 @@ useSeoMeta({
     ? `${currentCategory.value.name}, AI tutorials, AI blog, ${currentCategory.value.name} guide`
     : 'AI tutorials, AI blog',
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 </script>
 

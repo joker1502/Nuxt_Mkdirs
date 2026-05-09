@@ -45,10 +45,15 @@ const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
   title: 'Blog | Top AI Skills',
-  description: 'Read the latest articles, tutorials, and insights about AI tools and skills.',
+  description: 'Read the latest articles, tutorials, and insights about AI tools and skills. Learn how to use AI tools with step-by-step guides.',
   ogTitle: 'Blog | Top AI Skills',
   ogDescription: 'Read the latest articles, tutorials, and insights about AI tools and skills.',
+  keywords: 'AI tutorials, AI blog, AI tools guides, AI skills tutorials, how to use AI',
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 </script>
 

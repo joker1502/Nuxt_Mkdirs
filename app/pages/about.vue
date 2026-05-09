@@ -7,6 +7,12 @@ useSeoMeta({
   description: 'Learn about Top AI Skills — the curated directory of the best AI skills, AI agents, and AI tools. Expert-reviewed resources for developers and creators.',
   ogTitle: 'About Us | Top AI Skills',
   ogDescription: 'Learn about Top AI Skills — the curated directory of the best AI skills, AI agents, and AI tools. Expert-reviewed resources for developers and creators.',
+  keywords: 'Top AI Skills, AI skills directory, AI agents, AI tools, about AI directory',
+  twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 
 // Inject AboutPage JSON-LD for EEAT

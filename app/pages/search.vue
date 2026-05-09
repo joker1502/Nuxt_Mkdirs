@@ -61,8 +61,16 @@ const categories = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Search - Directory Template',
-  description: 'Search for your needs.',
+  title: 'Search AI Skills & Tutorials | Top AI Skills',
+  description: 'Search and discover the best AI skills, AI agents, AI tools, and tutorials. Browse curated AI resources by category, tag, or keyword.',
+  ogTitle: 'Search AI Skills & Tutorials | Top AI Skills',
+  ogDescription: 'Search and discover the best AI skills, AI agents, AI tools, and tutorials.',
+  keywords: 'AI skills search, AI tools, AI agents, AI directory, AI tutorials, browse AI tools',
+  twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 </script>
 

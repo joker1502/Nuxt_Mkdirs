@@ -96,7 +96,7 @@ const props = defineProps<Props>();
     <div class="border-t py-4">
       <LayoutContainer class="flex items-center justify-between">
         <span class="text-muted-foreground text-sm">
-          Copyright &copy; {{ new Date().getFullYear() }} All Rights Reserved.
+          Copyright &copy; {{ new Date().getFullYear() }} Top AI Skills. All Rights Reserved.
         </span>
 
         <div class="flex items-center gap-3">
