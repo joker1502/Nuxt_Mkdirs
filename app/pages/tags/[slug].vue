@@ -133,7 +133,7 @@ useSeoMeta({
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination :route-prefix="`/tag/${slug}`" :total-pages="totalPages" />
+          <SharedPagination :route-prefix="`/tags/${slug}`" :total-pages="totalPages" />
         </div>
       </template>
     </LayoutContainer>

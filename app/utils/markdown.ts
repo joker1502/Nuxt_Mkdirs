@@ -26,8 +26,11 @@ export function markdownToHtml(md: string): string {
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
 
-  // Links
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="link-underline">$1</a>');
+  // Links - convert /item/ to /skill/ for internal links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => {
+    const fixedHref = href.replace(/^\/item\//, '/skill/');
+    return `<a href="${fixedHref}" target="_blank" rel="noopener noreferrer" class="link-underline">${text}</a>`;
+  });
 
   // Unordered lists - handle nested lists properly
   // First, mark list items with indentation level

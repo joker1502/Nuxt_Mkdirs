@@ -113,7 +113,7 @@ const imageUrl = computed(() => {
         <NuxtLink
           v-for="(tag, index) in item.tags.slice(0, 5)"
           :key="index"
-          :to="`/tag/${typeof tag === 'string' ? tag.toLowerCase().replace(/[\s/]+/g, '-') : (tag.slug?.current || tag.slug || tag.name?.toLowerCase().replace(/[\s/]+/g, '-'))}`"
+          :to="`/tags/${typeof tag === 'string' ? tag.toLowerCase().replace(/[\\s/]+/g, '-') : (tag.slug?.current || tag.slug || tag.name?.toLowerCase().replace(/[\\s/]+/g, '-'))}`"
           class="flex items-center justify-center space-x-0.5 group"
         >
           <Hash class="w-3 h-3 text-muted-foreground icon-scale" />

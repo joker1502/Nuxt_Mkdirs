@@ -138,7 +138,7 @@ const bgImageUrl = computed(() => {
           <NuxtLink
             v-for="(tag, index) in item.tags.slice(0, 3)"
             :key="index"
-            :to="`/tag/${typeof tag === 'string' ? tag.toLowerCase().replace(/[\s/]+/g, '-') : tag}`"
+            :to="`/tags/${typeof tag === 'string' ? tag.toLowerCase().replace(/[\\s/]+/g, '-') : tag}`"
             class="flex items-center justify-center space-x-0.5 group/tag"
           >
             <Hash :class="cn('w-3 h-3 icon-scale', 'text-muted-foreground')" />
