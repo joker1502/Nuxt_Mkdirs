@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Globe, Hash, LayoutGrid, ArrowLeft } from 'lucide-vue-next';
 import { getSanityImageUrl, getSanityIconUrl } from '~/utils/sanity-image';
+import { markdownToHtml } from '~/utils/markdown';
 
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);
@@ -21,7 +22,7 @@ function formatDate(dateString: string | undefined) {
 // Get image URL
 const imageUrl = computed(() => {
   if (!item.value?.image) return '';
-  return getSanityImageUrl(item.value.image, { width: 800, height: 450 });
+  return getSanityImageUrl(item.value.image, { width: 800 });
 });
 
 // Get icon URL
@@ -191,7 +192,7 @@ onMounted(() => {
             <h2 class="text-lg font-semibold mb-4">Introduction</h2>
             <div class="prose prose-sm dark:prose-invert max-w-none">
               <SanityPortableText v-if="Array.isArray(item.introduction)" :blocks="item.introduction" />
-              <p v-else>{{ item.introduction }}</p>
+              <div v-else v-html="markdownToHtml(item.introduction)" class="space-y-4"></div>
             </div>
           </div>
 

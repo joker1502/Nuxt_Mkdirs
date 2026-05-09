@@ -24,7 +24,7 @@ const { data: item, error } = await useFetch('/api/item', {
 // Computed image URL
 const imageUrl = computed(() => {
   if (!item.value?.image) return '';
-  return getSanityImageUrl(item.value.image, { width: 400, height: 225 });
+  return getSanityImageUrl(item.value.image, { width: 400 });
 });
 
 // Item URL

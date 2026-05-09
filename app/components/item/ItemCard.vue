@@ -14,7 +14,7 @@ const props = defineProps<Props>();
 const imageUrl = computed(() => {
   const img = props.item.image as any;
   if (img?.asset) {
-    return getSanityImageUrl(img, { width: 800, height: 450 });
+    return getSanityImageUrl(img, { width: 800 });
   }
   return typeof img === 'string' ? img : '';
 });

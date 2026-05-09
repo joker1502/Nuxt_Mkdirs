@@ -15,8 +15,9 @@ function getImageBuilder() {
 
 /**
  * Generate Sanity image URL using @sanity/image-url
+ * Only width is passed — height is NOT forced so images keep their natural aspect ratio.
  */
-export function getSanityImageUrl(image: any, options?: { width?: number; height?: number }): string {
+export function getSanityImageUrl(image: any, options?: { width?: number }): string {
   if (!image || !image.asset) return '';
   
   const builder = getImageBuilder();
@@ -24,9 +25,6 @@ export function getSanityImageUrl(image: any, options?: { width?: number; height
   
   if (options?.width) {
     imgBuilder = imgBuilder.width(options.width);
-  }
-  if (options?.height) {
-    imgBuilder = imgBuilder.height(options.height);
   }
   
   return imgBuilder.url();

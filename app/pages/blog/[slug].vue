@@ -11,7 +11,7 @@ const { data: post, error } = await useFetch(() => `/api/blog/${slug.value}`);
 // Computed values for template
 const imageUrl = computed(() => {
   if (!post.value?.image) return '';
-  return getSanityImageUrl(post.value.image, { width: 1200, height: 675 });
+  return getSanityImageUrl(post.value.image, { width: 1200 });
 });
 
 const authorImageUrl = computed(() => {
@@ -32,7 +32,7 @@ const relatedPosts = computed(() => {
     title: p.title,
     slug: p.slug?.current || p.slug,
     excerpt: p.excerpt,
-    image: p.image ? getSanityImageUrl(p.image, { width: 800, height: 400 }) : '',
+    image: p.image ? getSanityImageUrl(p.image, { width: 800 }) : '',
     publishedAt: p.publishDate,
     author: p.author?.name || '',
     categories: p.categories?.map((c: any) => c.name) || [],

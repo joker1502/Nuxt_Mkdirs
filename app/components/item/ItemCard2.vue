@@ -23,7 +23,7 @@ const iconUrl = computed(() => {
 const bgImageUrl = computed(() => {
   const image = props.item.image as any;
   if (image?.asset) {
-    return getSanityImageUrl(image, { width: 800, height: 600 });
+    return getSanityImageUrl(image, { width: 800 });
   }
   return typeof image === 'string' ? image : '';
 });
@@ -45,13 +45,11 @@ const bgImageUrl = computed(() => {
       class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
       :style="{ backgroundImage: `url(${bgImageUrl})` }"
     />
-    <!-- Gradient Overlay for readability -->
+    <!-- Subtle background layer (no gradient) -->
     <div
       :class="cn(
         'absolute inset-0 transition-opacity duration-300',
-        bgImageUrl
-          ? 'bg-gradient-to-t from-black/90 via-black/50 to-black/20 group-hover:from-black/95 group-hover:via-black/60'
-          : 'bg-card'
+        bgImageUrl ? 'bg-card/30' : 'bg-card'
       )"
     />
 
@@ -80,7 +78,6 @@ const bgImageUrl = computed(() => {
             <h3
               :class="cn(
                 'text-xl font-semibold truncate overflow-hidden text-ellipsis',
-                bgImageUrl ? 'text-white drop-shadow-md' : '',
                 item.featured && 'text-gradient_indigo-purple'
               )"
             >
@@ -99,7 +96,7 @@ const bgImageUrl = computed(() => {
               :class="cn(
                 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
                 bgImageUrl
-                  ? 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                  ? 'bg-card/50 backdrop-blur-sm border border-border'
                   : 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground'
               )"
             >
@@ -112,7 +109,7 @@ const bgImageUrl = computed(() => {
               :class="cn(
                 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
                 bgImageUrl
-                  ? 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                  ? 'bg-card/50 backdrop-blur-sm border border-border'
                   : 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground'
               )"
             >
@@ -129,7 +126,7 @@ const bgImageUrl = computed(() => {
           <p
             :class="cn(
               'text-sm line-clamp-2 leading-relaxed',
-              bgImageUrl ? 'text-white/90' : 'text-muted-foreground'
+              'text-muted-foreground'
             )"
           >
             {{ item.description }}
@@ -144,12 +141,12 @@ const bgImageUrl = computed(() => {
             :to="`/tag/${typeof tag === 'string' ? tag.toLowerCase().replace(/[\s/]+/g, '-') : tag}`"
             class="flex items-center justify-center space-x-0.5 group/tag"
           >
-            <Hash :class="cn('w-3 h-3 icon-scale', bgImageUrl ? 'text-white/70' : 'text-muted-foreground')" />
-            <span :class="cn('text-sm link-underline', bgImageUrl ? 'text-white/70' : 'text-muted-foreground')">
+            <Hash :class="cn('w-3 h-3 icon-scale', 'text-muted-foreground')" />
+            <span :class="cn('text-sm link-underline', 'text-muted-foreground')">
               {{ typeof tag === 'string' ? tag : tag }}
             </span>
           </NuxtLink>
-          <span v-if="item.tags.length > 3" :class="cn('text-sm px-1', bgImageUrl ? 'text-white/60' : 'text-muted-foreground')">
+          <span v-if="item.tags.length > 3" :class="cn('text-sm px-1', 'text-muted-foreground')">
             +{{ item.tags.length - 3 }}
           </span>
         </div>

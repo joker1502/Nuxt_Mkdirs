@@ -142,7 +142,7 @@ const freeButtonText = computed(() => {
 // Computed image URL
 const imageUrl = computed(() => {
   if (!item.value?.image) return '';
-  return getSanityImageUrl(item.value.image, { width: 400, height: 225 });
+  return getSanityImageUrl(item.value.image, { width: 400 });
 });
 
 useSeoMeta({

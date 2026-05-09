@@ -22,7 +22,7 @@ const collections = computed(() => {
     name: c.name,
     slug: c.slug?.current || c.slug,
     description: c.description,
-    image: c.image ? getSanityImageUrl(c.image, { width: 400, height: 300 }) : '',
+    image: c.image ? getSanityImageUrl(c.image, { width: 400 }) : '',
     itemCount: c.itemCount || 0,
   }));
 });
