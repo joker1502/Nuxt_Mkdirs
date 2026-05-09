@@ -29,10 +29,63 @@ export function markdownToHtml(md: string): string {
   // Links
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="link-underline">$1</a>');
 
-  // Unordered lists
-  html = html.replace(/^-\s+(.+)$/gm, '<li class="ml-4 list-disc">$1</li>');
-  html = html.replace(/(<li[\s\S]*?<\/li>)\s*\n(?!<li)/g, '$1\n</ul>\n');
-  html = html.replace(/(?:^|\n)(<li[\s\S]*?<\/li>)/g, '\n<ul class="my-2 space-y-1">\n$1');
+  // Unordered lists - handle nested lists properly
+  // First, mark list items with indentation level
+  const listLines: string[] = [];
+  html.split('\n').forEach(line => {
+    const match = line.match(/^(\s*)-\s+(.+)$/);
+    if (match) {
+      const indent = match[1].length;
+      listLines.push({ indent, content: match[2] });
+    } else {
+      listLines.push({ indent: -1, content: line });
+    }
+  });
+
+  // Build proper nested list HTML
+  const buildList = (lines: typeof listLines, startIdx: number, parentIndent: number): { html: string; nextIdx: number } => {
+    let result = '<ul class="my-2 space-y-1">\n';
+    let i = startIdx;
+
+    while (i < lines.length) {
+      const line = lines[i];
+      if (line.indent === -1) break;
+      if (line.indent <= parentIndent && i > startIdx) break;
+
+      result += `<li class="list-disc list-inside">${line.content}`;
+
+      // Check for nested items
+      if (i + 1 < lines.length && lines[i + 1].indent > line.indent) {
+        const nested = buildList(lines, i + 1, line.indent);
+        result += '\n' + nested.html;
+        i = nested.nextIdx;
+      } else {
+        i++;
+      }
+
+      result += '</li>\n';
+    }
+
+    result += '</ul>';
+    return { html: result, nextIdx: i };
+  };
+
+  // Process the lines into nested list HTML
+  let listHtml = '';
+  let idx = 0;
+  while (idx < listLines.length) {
+    if (listLines[idx].indent === -1) {
+      listHtml += listLines[idx].content + '\n';
+      idx++;
+    } else {
+      // If content before this list is not empty, add a separator
+      const result = buildList(listLines, idx, -1);
+      listHtml += '\n' + result.html + '\n';
+      idx = result.nextIdx;
+    }
+  }
+
+  html = listHtml;
 
   // Paragraphs: split by double newlines
   const blocks = html.split(/\n\n+/).map(block => {

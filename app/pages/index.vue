@@ -158,7 +158,7 @@ onMounted(() => {
       <!-- Left sidebar: category/group list (desktop only) -->
       <div class="hidden md:block w-[250px] shrink-0">
         <div class="sticky top-24">
-          <HomeGroupList :groups="groups" :categories="categories" url-prefix="/" />
+          <HomeGroupList :categories="categories" url-prefix="/" />
         </div>
       </div>
 

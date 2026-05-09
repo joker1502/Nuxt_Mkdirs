@@ -38,7 +38,7 @@ const imageUrl = computed(() => {
             :src="imageUrl"
             :alt="`image of ${item.name}`"
             :title="`image of ${item.name}`"
-            class="object-cover w-full h-full image-scale"
+            class="object-contain w-full h-full image-scale"
           />
         </div>
         <!-- Placeholder when no image -->
@@ -66,18 +66,16 @@ const imageUrl = computed(() => {
             </span>
           </div>
         </div>
-        <!-- Visit Website overlay -->
-        <a
+        <!-- Visit Website overlay - link to detail page -->
+        <NuxtLink
           v-if="item.link"
-          :href="item.link"
-          target="_blank"
-          rel="noopener noreferrer"
+          :to="`/skill/${item.slug}`"
           class="absolute inset-0 flex items-center justify-center bg-black opacity-0 group-hover:opacity-75 transition-opacity duration-300 rounded-t-lg"
         >
           <span class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            Visit Website
+            View Details
           </span>
-        </a>
+        </NuxtLink>
       </div>
 
       <!-- Center content -->
