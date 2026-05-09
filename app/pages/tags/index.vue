@@ -99,7 +99,7 @@ useSeoMeta({
       <template v-else>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- First 2 items -->
-          <ItemCard2
+          <ItemCard
             v-for="item in items.slice(0, 2)"
             :key="item._id"
             :item="item"
@@ -109,7 +109,7 @@ useSeoMeta({
           <ItemSponsorItemCard v-if="sponsorItem" :item="sponsorItem" />
           
           <!-- Rest of items -->
-          <ItemCard2
+          <ItemCard
             v-for="item in items.slice(2)"
             :key="item._id"
             :item="item"
