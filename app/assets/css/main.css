@@ -301,6 +301,8 @@ body {
 .prose p {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .prose a {
