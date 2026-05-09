@@ -1,0 +1,3 @@
+# /blog -> /tutorial redirects (Cloudflare Pages)
+/blog/*  /tutorial/:splat  301
+/blog     /tutorial          301
