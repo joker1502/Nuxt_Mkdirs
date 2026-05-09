@@ -133,7 +133,7 @@ onMounted(() => {
             </div>
 
             <!-- Blog post content -->
-            <div class="mt-4">
+            <div class="prose max-w-none mt-4">
               <SanityPortableText v-if="post.body" :blocks="post.body" />
             </div>
 

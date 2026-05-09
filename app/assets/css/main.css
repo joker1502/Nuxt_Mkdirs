@@ -320,8 +320,53 @@ body {
   margin-bottom: 0.5em;
 }
 
+.prose ul,
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .prose strong {
   font-weight: 600;
+}
+
+.prose pre {
+  overflow-x: auto;
+  max-width: 100%;
+  background-color: var(--color-muted);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.prose code {
+  font-size: 0.875em;
+  background-color: var(--color-muted);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.prose img,
+.prose figure {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
 }
 
 .dark .prose {
