@@ -13,15 +13,15 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  urlPrefix: '/blog',
+  urlPrefix: '/tutorial',
 });
 
 const route = useRoute();
 
-// Get current slug from route - handle both /blog/category/[slug] and /blog
+// Get current slug from route - handle both /tutorial/category/[slug] and /tutorial
 const currentSlug = computed(() => {
   const path = route.path;
-  if (path.includes('/blog/category/')) {
+  if (path.includes('/tutorial/category/')) {
     return route.params.slug as string;
   }
   return '';

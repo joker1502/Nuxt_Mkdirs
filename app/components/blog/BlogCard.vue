@@ -13,7 +13,7 @@ defineProps<Props>();
   <div class="group cursor-pointer flex flex-col gap-4">
     <!-- Image container -->
     <div class="group overflow-hidden relative aspect-[4/3] rounded-lg transition-all">
-      <NuxtLink :to="`/blog/${post.slug}`">
+      <NuxtLink :to="`/tutorial/${post.slug}`">
         <div v-if="post.image" class="relative w-full h-full">
           <img
             :src="post.image"
@@ -45,7 +45,7 @@ defineProps<Props>();
       <div>
         <!-- Post title -->
         <h3 class="text-lg line-clamp-2 font-medium">
-          <NuxtLink :to="`/blog/${post.slug}`">
+          <NuxtLink :to="`/tutorial/${post.slug}`">
             <span
               class="bg-gradient-to-r from-green-200 to-green-100 
                 bg-[length:0px_10px] bg-left-bottom bg-no-repeat

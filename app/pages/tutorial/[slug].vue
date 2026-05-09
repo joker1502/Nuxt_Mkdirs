@@ -41,7 +41,7 @@ const relatedPosts = computed(() => {
 
 // Generate keywords from post data
 const keywords = computed(() => {
-  if (!post.value) return 'AI blog, AI tutorials, AI skills';
+  if (!post.value) return 'AI skills tutorials, AI tools guides';
   const parts = [post.value.title];
   if (post.value.categories?.length) {
     parts.push(...post.value.categories.map((c: any) => (typeof c === 'string' ? c : c.name)));
@@ -50,12 +50,12 @@ const keywords = computed(() => {
 });
 
 useSeoMeta({
-  title: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
-  description: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
-  ogTitle: () => `${post.value?.title || 'Blog Post'} | Top AI Skills`,
-  ogDescription: () => post.value?.excerpt || 'Read this blog post on Top AI Skills.',
+  title: () => `${post.value?.title || 'Tutorial'} | Top AI Skills`,
+  description: () => post.value?.excerpt || 'Read this tutorial on Top AI Skills.',
+  ogTitle: () => `${post.value?.title || 'Tutorial'} | Top AI Skills`,
+  ogDescription: () => post.value?.excerpt || 'Read this tutorial on Top AI Skills.',
   ogImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
-  ogUrl: () => `https://topaiskills.com/blog/${slug.value}`,
+  ogUrl: () => `https://topaiskills.com/tutorial/${slug.value}`,
   ogSiteName: 'Top AI Skills',
   ogLocale: 'en_US',
   ogType: 'article',
@@ -73,7 +73,7 @@ onMounted(() => {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': `https://topaiskills.com/blog/${slug.value}#article`,
+    '@id': `https://topaiskills.com/tutorial/${slug.value}#article`,
     headline: post.value.title,
     description: post.value.excerpt,
     image: imageUrl.value || 'https://topaiskills.com/logo.png',
@@ -95,7 +95,7 @@ onMounted(() => {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://topaiskills.com/blog/${slug.value}`,
+      '@id': `https://topaiskills.com/tutorial/${slug.value}`,
     },
   };
   const script = document.createElement('script');
@@ -138,7 +138,7 @@ onMounted(() => {
             </div>
 
             <div class="flex items-center justify-start mt-16">
-              <NuxtLink to="/blog">
+            <NuxtLink to="/tutorial">
                 <UiButton variant="outline" class="gap-2">
                   <ArrowLeft class="size-4" />
                   All Posts
@@ -189,7 +189,7 @@ onMounted(() => {
                 <ul class="flex flex-wrap gap-4">
                   <li v-for="category in post.categories" :key="category._id">
                     <NuxtLink
-                      :to="`/blog/category/${category.slug?.current || category.slug}`"
+                      :to="`/tutorial/category/${category.slug?.current || category.slug}`"
                       class="text-sm link-underline"
                     >
                       {{ category.name }}
@@ -217,9 +217,9 @@ onMounted(() => {
       <SharedEmptyState
         v-else
         title="Post not found"
-        description="The blog post you're looking for doesn't exist."
+        description="The tutorial you're looking for doesn't exist."
       >
-        <NuxtLink to="/blog" class="mt-4">
+        <NuxtLink to="/tutorial" class="mt-4">
           <UiButton>Browse all posts</UiButton>
         </NuxtLink>
       </SharedEmptyState>

@@ -2,7 +2,6 @@
 import { getSanityImageUrl } from '~/utils/sanity-image';
 
 const route = useRoute();
-const slug = computed(() => route.params.slug as string);
 
 // Fetch blog categories from Sanity
 const { data: categoriesData } = await useFetch('/api/blog/categories');
@@ -16,14 +15,9 @@ const categories = computed(() => {
   }));
 });
 
-const currentCategory = computed(() => 
-  categories.value.find((c: any) => c.slug === slug.value)
-);
-
 // Reactive query params
 const postsQuery = computed(() => ({
   limit: 6,
-  category: slug.value,
   page: route.query.page || undefined,
 }));
 
@@ -50,13 +44,11 @@ const posts = computed(() => {
 const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
-  title: () => `${currentCategory.value?.name || 'Category'} - Blog | Top AI Skills`,
-  description: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
-  ogTitle: () => `${currentCategory.value?.name || 'Category'} - Blog | Top AI Skills`,
-  ogDescription: () => `Read blog posts about ${currentCategory.value?.name || 'this category'} on Top AI Skills.`,
-  keywords: () => currentCategory.value?.name
-    ? `${currentCategory.value.name}, AI tutorials, AI blog, ${currentCategory.value.name} guide`
-    : 'AI tutorials, AI blog',
+  title: 'AI Skills Tutorials | Top AI Skills',
+  description: 'Learn AI skills with step-by-step tutorials. From beginner to advanced — master AI tools through hands-on guides and practical examples.',
+  ogTitle: 'AI Skills Tutorials | Top AI Skills',
+  ogDescription: 'Learn AI skills with step-by-step tutorials. From beginner to advanced — master AI tools through hands-on guides and practical examples.',
+  keywords: 'AI skills tutorials, learn AI skills, AI tools tutorials, AI tutorials for beginners, AI skills guide, how to use AI tools',
   twitterCard: 'summary_large_image',
   twitterSite: '@zhirentegong',
   twitterCreator: '@zhirentegong',
@@ -70,8 +62,8 @@ useSeoMeta({
     <!-- Header -->
     <div class="mt-8 w-full flex flex-col items-center justify-center gap-8">
       <SharedHeaderSection
-        label="Blog"
-        :title="currentCategory?.name || 'Read our latest blog posts'"
+        label="Tutorials"
+        title="Learn AI skills with step-by-step tutorials"
       />
 
       <!-- Blog Category Filter -->
@@ -87,7 +79,7 @@ useSeoMeta({
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination :route-prefix="`/blog/category/${slug}`" :total-pages="totalPages" />
+          <SharedPagination route-prefix="/tutorial" :total-pages="totalPages" />
         </div>
       </template>
     </LayoutContainer>
