@@ -249,7 +249,7 @@ onMounted(() => {
               <ul class="flex flex-wrap gap-4">
                 <li v-for="tag in item.tags" :key="tag._id">
                   <NuxtLink
-                    :to="`/tag/${tag.slug?.current}`"
+                    :to="`/tags/${tag.slug?.current || tag.slug}`"
                     class="text-sm link-underline flex items-center justify-center space-x-0.5 group"
                   >
                     <Hash class="w-3 h-3 text-muted-foreground icon-scale" />

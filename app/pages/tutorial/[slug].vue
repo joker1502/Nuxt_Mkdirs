@@ -197,6 +197,21 @@ onMounted(() => {
                   </li>
                 </ul>
               </div>
+
+              <!-- Tags -->
+              <div v-if="post.tags?.length" class="bg-muted/50 rounded-lg p-6">
+                <h2 class="text-lg font-semibold mb-4">Tags</h2>
+                <ul class="flex flex-wrap gap-2">
+                  <li v-for="tag in post.tags" :key="tag._id">
+                    <NuxtLink
+                      :to="`/tags/${tag.slug?.current || tag.slug}`"
+                      class="inline-block text-xs font-medium bg-background border rounded-full px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      {{ tag.name }}
+                    </NuxtLink>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

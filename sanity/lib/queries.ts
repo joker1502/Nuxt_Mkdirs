@@ -236,6 +236,7 @@ export const blogPostSimpleFields = /* groq */ `
   publishDate,
   author->,
   categories[]->,
+  tags[]->,
 `;
 
 const blogPostFields = /* groq */ `

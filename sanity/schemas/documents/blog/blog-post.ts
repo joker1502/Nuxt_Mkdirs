@@ -88,6 +88,18 @@ export default defineType({
       type: "datetime",
       initialValue: () => new Date().toISOString(),
     }),
+    defineField({
+      name: "tags",
+      title: "Tags",
+      description: "The tags of the blog post, may have multiple tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {

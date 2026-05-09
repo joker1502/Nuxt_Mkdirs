@@ -39,6 +39,12 @@ export default defineEventHandler(async (event) => {
       && $slug in tags[]->slug.current])`;
     const total = await sanityFetch<number>(countQuery, { slug });
 
+    // Count blog posts with this tag
+    const blogCountQuery = `count(*[_type == "blogPost" && defined(slug.current) 
+      && defined(publishDate)
+      && $slug in tags[]->slug.current])`;
+    const blogTotal = await sanityFetch<number>(blogCountQuery, { slug });
+
     // Get items with this tag
     const start = (page - 1) * limit;
     const end = start + limit;
@@ -67,14 +73,37 @@ export default defineEventHandler(async (event) => {
 
     const items = await sanityFetch<any[]>(itemsQuery, { slug });
 
+    // Get blog posts with this tag
+    const blogPostsQuery = `*[_type == "blogPost" && defined(slug.current) 
+      && defined(publishDate)
+      && $slug in tags[]->slug.current] 
+      | order(publishDate desc) [${start}...${end}] {
+        _id,
+        _createdAt,
+        title,
+        slug,
+        excerpt,
+        image {
+          ...,
+          "blurDataURL": asset->metadata.lqip,
+        },
+        publishDate,
+        author->,
+        categories[]->,
+        tags[]->,
+      }`;
+
+    const blogPosts = await sanityFetch<any[]>(blogPostsQuery, { slug });
+
     return {
       tag,
       items: items || [],
+      blogPosts: blogPosts || [],
       pagination: {
         page,
         limit,
-        total,
-        totalPages: Math.ceil(total / limit),
+        total: total + blogTotal,
+        totalPages: Math.ceil((total + blogTotal) / limit),
       },
     };
   } catch (error: any) {

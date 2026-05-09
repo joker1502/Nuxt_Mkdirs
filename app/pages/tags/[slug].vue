@@ -54,6 +54,21 @@ const items = computed(() => {
   }));
 });
 
+const blogPosts = computed(() => {
+  if (!tagData.value?.blogPosts) return [];
+  return tagData.value.blogPosts.map((post: any) => ({
+    _id: post._id,
+    title: post.title,
+    slug: post.slug?.current || post.slug,
+    excerpt: post.excerpt,
+    image: post.image,
+    publishDate: post.publishDate,
+    author: post.author?.name || '',
+    categories: post.categories?.map((c: any) => c.name) || [],
+    tags: post.tags?.map((t: any) => t.name) || [],
+  }));
+});
+
 const totalPages = computed(() => tagData.value?.pagination?.totalPages || 1);
 
 useSeoMeta({
@@ -102,6 +117,18 @@ useSeoMeta({
             :key="item._id"
             :item="item"
           />
+        </div>
+
+        <!-- Blog Posts grid -->
+        <div v-if="blogPosts.length > 0" class="mt-12">
+          <h2 class="text-xl font-semibold mb-6">Tutorials</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <BlogCard
+              v-for="post in blogPosts"
+              :key="post._id"
+              :post="post"
+            />
+          </div>
         </div>
 
         <!-- Pagination -->
