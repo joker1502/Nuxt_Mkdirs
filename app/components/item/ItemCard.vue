@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Award, Hash } from 'lucide-vue-next';
+import { Hash } from 'lucide-vue-next';
 import type { ItemInfo } from '~/types';
 import { cn } from '~/utils';
 import { getSanityImageUrl } from '~/utils/sanity-image';
@@ -34,14 +34,12 @@ const iconUrl = computed(() => {
       <div v-else class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
         <span class="text-lg font-bold text-muted-foreground/40">{{ item.name?.charAt(0)?.toUpperCase() || '?' }}</span>
       </div>
-      <div class="flex-1 min-w-0 flex items-center justify-between gap-2">
+      <div class="flex-1 min-w-0">
         <h3 :class="cn('text-lg font-medium truncate', item.featured && 'text-gradient_indigo-purple font-semibold')">
-          <span class="flex items-center gap-2">
-            <Award v-if="item.featured" class="w-4 h-4 flex-shrink-0 text-primary" />
+          <span class="flex items-center gap-1">
             <span class="truncate">{{ item.name }}</span>
           </span>
         </h3>
-        <ArrowRight class="w-4 h-4 flex-shrink-0 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </div>
     <div class="flex flex-wrap gap-1">
