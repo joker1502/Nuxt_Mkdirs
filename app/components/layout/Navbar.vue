@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Menu, ArrowRight, Home, Search, FolderOpen, Tag, BookOpen, DollarSign, Send, LayoutGrid, LayoutDashboard, Settings } from 'lucide-vue-next';
+import { Menu, ArrowRight, Home, Search, FolderOpen, Tag, BookOpen, DollarSign, Send, LayoutGrid, LayoutDashboard, Settings, Info } from 'lucide-vue-next';
 import { siteConfig } from '~/config/site';
 import { cn } from '~/utils';
 import type { MarketingConfig, DashboardConfig } from '~/types';
@@ -32,6 +32,7 @@ const iconMap: Record<string, any> = {
   submit: Send,
   dashboard: LayoutDashboard,
   settings: Settings,
+  info: Info,
 };
 
 function getIcon(iconName?: string) {
