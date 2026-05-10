@@ -71,8 +71,8 @@ useSeoMeta({
   ogLocale: 'en_US',
   ogType: 'website',
   keywords: () => currentCategory.value?.name
-    ? `${currentCategory.value.name}, AI Skills, best ${currentCategory.value.name}, AI Skills directory, top ${currentCategory.value.name.toLowerCase()}`
-    : 'AI Skills, AI Skills directory, find AI Skills',
+    ? `${currentCategory.value.name}, best ${currentCategory.value.name}, top ${currentCategory.value.name.toLowerCase()}, ${currentCategory.value.name.toLowerCase()} directory, AI Skills catalog`
+    : 'AI Skills by category, AI skills directory, discover AI Skills',
   twitterCard: 'summary_large_image',
   twitterSite: '@zhirentegong',
   twitterImage: 'https://topaiskills.com/logo.png',
