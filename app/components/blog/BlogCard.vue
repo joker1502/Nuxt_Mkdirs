@@ -13,7 +13,7 @@ const props = defineProps<Props>();
 <template>
   <div class="group cursor-pointer flex flex-col gap-4">
     <!-- Image container -->
-    <div v-if="!hideEmptyImage || post.image" class="group overflow-hidden relative aspect-[4/3] rounded-lg transition-all">
+    <div v-if="!hideEmptyImage" class="group overflow-hidden relative aspect-[4/3] rounded-lg transition-all">
       <NuxtLink :to="`/tutorial/${post.slug}`">
         <div v-if="post.image" class="relative w-full h-full">
           <img
