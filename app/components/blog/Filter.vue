@@ -60,7 +60,7 @@ const currentSlug = computed(() => {
     </LayoutContainer>
 
     <!-- Mobile View -->
-    <div class="md:hidden flex justify-center px-4">
+    <div class="md:hidden flex flex-col px-4">
       <div class="overflow-x-auto pb-2">
         <ul class="flex gap-x-2">
           <li>
