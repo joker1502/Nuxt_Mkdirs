@@ -100,7 +100,7 @@ useSeoMeta({
   twitterSite: '@zhirentegong',
   twitterCreator: '@zhirentegong',
   twitterImage: 'https://topaiskills.com/logo.png',
-  keywords: 'Top AI Skills, AI Skills, Best AI Skills, AI tools, AI directory, AI coding skills, AI writing skills',
+  keywords: 'Top AI Skills, AI Skills, Best AI Skills',
   robots: 'index, follow',
 });
 
