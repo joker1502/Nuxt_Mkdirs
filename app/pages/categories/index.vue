@@ -74,6 +74,7 @@ useSeoMeta({
   description: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
   ogTitle: 'Categories | Top AI Skills',
   ogDescription: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
+  keywords: 'AI Skills, browse AI Skills, AI Skills directory, find AI Skills by category',
   twitterCard: 'summary_large_image',
 });
 </script>
