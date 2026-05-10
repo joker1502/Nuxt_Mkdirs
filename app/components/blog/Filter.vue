@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { cn } from '~/utils';
-
 interface BlogCategory {
   _id: string;
   name: string;
@@ -18,7 +16,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const route = useRoute();
 
-// Get current slug from route - handle both /tutorial/category/[slug] and /tutorial
 const currentSlug = computed(() => {
   const path = route.path;
   if (path.includes('/tutorial/category/')) {
@@ -29,75 +26,67 @@ const currentSlug = computed(() => {
 </script>
 
 <template>
-  <section class="w-full">
+  <div>
     <!-- Desktop View -->
     <LayoutContainer class="hidden md:block">
       <div class="flex items-center justify-center">
-        <div class="h-9 overflow-hidden rounded-full border bg-background p-1 flex">
-          <!-- All button -->
-          <NuxtLink
-            :to="urlPrefix"
-            :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors',
-              !currentSlug
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-muted'
-            )"
-          >
-            All
-          </NuxtLink>
-
-          <!-- Category buttons -->
-          <NuxtLink
-            v-for="category in categories"
-            :key="category._id"
-            :to="`${urlPrefix}/category/${category.slug}`"
-            :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors',
-              currentSlug === category.slug
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-muted'
-            )"
-          >
-            {{ category.name }}
-          </NuxtLink>
+        <div class="overflow-x-auto pb-2">
+          <ul class="flex gap-x-2">
+            <li>
+              <NuxtLink :to="urlPrefix">
+                <UiButton
+                  :variant="!currentSlug ? 'default' : 'outline'"
+                  size="sm"
+                  class="px-3 py-3 shrink-0"
+                >
+                  All
+                </UiButton>
+              </NuxtLink>
+            </li>
+            <li v-for="category in categories" :key="category._id">
+              <NuxtLink :to="`${urlPrefix}/category/${category.slug}`">
+                <UiButton
+                  :variant="currentSlug === category.slug ? 'default' : 'outline'"
+                  size="sm"
+                  class="px-3 py-3 shrink-0"
+                >
+                  {{ category.name }}
+                </UiButton>
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
       </div>
     </LayoutContainer>
 
     <!-- Mobile View -->
-    <div class="block md:hidden w-full px-4">
-      <div class="flex items-center justify-center">
-        <div class="h-9 overflow-hidden rounded-full border bg-background p-1 flex overflow-x-auto">
-          <!-- All button -->
-          <NuxtLink
-            :to="urlPrefix"
-            :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors whitespace-nowrap',
-              !currentSlug
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-muted'
-            )"
-          >
-            All
-          </NuxtLink>
-
-          <!-- Category buttons -->
-          <NuxtLink
-            v-for="category in categories"
-            :key="category._id"
-            :to="`${urlPrefix}/category/${category.slug}`"
-            :class="cn(
-              'h-7 rounded-full px-5 flex items-center justify-center text-sm font-medium transition-colors whitespace-nowrap',
-              currentSlug === category.slug
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-muted'
-            )"
-          >
-            {{ category.name }}
-          </NuxtLink>
-        </div>
+    <div class="md:hidden flex justify-center px-4">
+      <div class="overflow-x-auto pb-2">
+        <ul class="flex gap-x-2">
+          <li>
+            <NuxtLink :to="urlPrefix">
+              <UiButton
+                :variant="!currentSlug ? 'default' : 'outline'"
+                size="sm"
+                class="px-3 py-3 whitespace-nowrap"
+              >
+                All
+              </UiButton>
+            </NuxtLink>
+          </li>
+          <li v-for="category in categories" :key="category._id">
+            <NuxtLink :to="`${urlPrefix}/category/${category.slug}`">
+              <UiButton
+                :variant="currentSlug === category.slug ? 'default' : 'outline'"
+                size="sm"
+                class="px-3 py-3 whitespace-nowrap"
+              >
+                {{ category.name }}
+              </UiButton>
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
 </template>
