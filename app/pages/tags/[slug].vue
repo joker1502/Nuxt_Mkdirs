@@ -127,6 +127,7 @@ useSeoMeta({
               v-for="post in blogPosts"
               :key="post._id"
               :post="post"
+              hide-empty-image
             />
           </div>
         </div>
