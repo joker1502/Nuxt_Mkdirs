@@ -107,9 +107,9 @@ onMounted(() => {
   <LayoutContainer class="py-8">
     <div v-if="item" class="flex flex-col gap-8">
       <!-- Header section -->
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <div class="grid grid-cols-1 gap-8">
         <!-- Left column -->
-        <div class="lg:col-span-3 gap-8 flex flex-col">
+        <div class="gap-8 flex flex-col">
           <!-- Breadcrumb -->
           <nav class="flex items-center gap-2 text-sm text-muted-foreground">
             <NuxtLink to="/" class="hover:text-foreground">Home</NuxtLink>
@@ -158,23 +158,6 @@ onMounted(() => {
                 <span>View on GitHub</span>
               </UiButton>
             </a>
-          </div>
-        </div>
-
-        <!-- Right column - Image -->
-        <div class="lg:col-span-2">
-          <div class="relative group overflow-hidden rounded-lg aspect-video">
-            <div class="relative block w-full h-full">
-              <img
-                v-if="imageUrl"
-                :src="imageUrl"
-                :alt="`image for ${item.name}`"
-                class="border w-full h-full shadow-lg object-contain image-scale"
-              />
-              <div v-else class="w-full h-full bg-muted flex items-center justify-center">
-                <span class="text-4xl font-bold text-muted-foreground/30">{{ item.name?.charAt(0)?.toUpperCase() }}</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
