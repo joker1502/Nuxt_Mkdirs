@@ -26,7 +26,7 @@ const currentSlug = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div class="w-full">
     <!-- Desktop View -->
     <LayoutContainer class="hidden md:block">
       <div class="flex items-center justify-center">
