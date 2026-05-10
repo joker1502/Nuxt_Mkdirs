@@ -115,6 +115,24 @@ onMounted(() => {
           <div class="lg:col-span-2 flex flex-col">
             <!-- Basic information -->
             <div class="space-y-8">
+              <!-- Breadcrumb -->
+              <nav class="flex items-center gap-2 text-sm text-muted-foreground">
+                <NuxtLink to="/" class="hover:text-foreground">Home</NuxtLink>
+                <span>/</span>
+                <NuxtLink to="/tutorial" class="hover:text-foreground">Tutorials</NuxtLink>
+                <template v-if="post.categories?.[0]">
+                  <span>/</span>
+                  <NuxtLink
+                    :to="`/tutorial/category/${post.categories[0].slug?.current || post.categories[0].slug}`"
+                    class="hover:text-foreground"
+                  >
+                    {{ post.categories[0].name }}
+                  </NuxtLink>
+                </template>
+                <span>/</span>
+                <span class="text-foreground">{{ post.title }}</span>
+              </nav>
+
               <!-- Blog post image -->
               <div class="group overflow-hidden relative aspect-video rounded-lg transition-all border">
                 <img
