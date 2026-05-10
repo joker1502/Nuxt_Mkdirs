@@ -71,10 +71,10 @@ const sponsorItem = computed(() => {
 
 useSeoMeta({
   title: 'Categories | Top AI Skills',
-  description: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
+  description: 'Browse the best AI Skills by category. Find and compare top AI tools across every category.',
   ogTitle: 'Categories | Top AI Skills',
-  ogDescription: 'Browse AI tools and skills by category. Find the best AI resources for every use case.',
-  keywords: 'AI Skills by category, discover AI Skills, AI skills categories, browse AI skills directory',
+  ogDescription: 'Browse the best AI Skills by category. Find and compare top AI tools across every category.',
+  keywords: 'AI Skills by category, best AI Skills, AI tools categories, browse AI skills directory, top AI Skills list',
   twitterCard: 'summary_large_image',
 });
 </script>
