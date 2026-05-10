@@ -69,12 +69,22 @@ const sponsorItem = computed(() => {
   };
 });
 
+const allCategoryNames = computed(() => {
+  if (!categories.value?.length) return [];
+  return categories.value.map((c: any) => c.name);
+});
+
 useSeoMeta({
   title: 'Categories | Top AI Skills',
   description: 'Browse the best AI Skills by category. Find and compare top AI tools across every category.',
   ogTitle: 'Categories | Top AI Skills',
   ogDescription: 'Browse the best AI Skills by category. Find and compare top AI tools across every category.',
-  keywords: 'AI Skills by category, best AI Skills, AI tools categories, browse AI skills directory, top AI Skills list',
+  keywords: () => {
+    const names = allCategoryNames.value;
+    const base = 'AI Skills by category, best AI Skills, AI tools categories, browse AI skills directory, top AI Skills list';
+    if (names.length === 0) return base;
+    return `${names.join(', ')}, ${base}`;
+  },
   twitterCard: 'summary_large_image',
 });
 </script>
