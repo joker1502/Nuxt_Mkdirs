@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
     const itemsQuery = `*[_type == "item" && defined(slug.current) 
       && forceHidden != true && sponsor != true
       && $slug in tags[]->slug.current] 
-      | order(coalesce(featured, false) desc, _createdAt desc) [${start}...${end}] {
+      | order(coalesce(featured, false) desc, _updatedAt desc) [${start}...${end}] {
         _id,
         _createdAt,
         name,

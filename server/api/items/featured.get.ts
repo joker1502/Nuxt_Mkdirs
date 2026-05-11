@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
       && forceHidden != true
       && sponsor != true
       && featured == true] 
-      | order(_createdAt desc) [0...$count] {
+      | order(_updatedAt desc) [0...$count] {
         _id,
         _createdAt,
         name,

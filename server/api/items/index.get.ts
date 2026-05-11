@@ -73,9 +73,9 @@ export default defineEventHandler(async (event) => {
     groqQuery += `]`;
 
     // Sort order
-    let sortOrder = 'order(coalesce(featured, false) desc, _createdAt desc)';
+    let sortOrder = 'order(coalesce(featured, false) desc, _updatedAt desc)';
     if (sort === 'time-asc') {
-      sortOrder = 'order(_createdAt asc)';
+      sortOrder = 'order(_updatedAt asc)';
     } else if (sort === 'name-asc') {
       sortOrder = 'order(name asc)';
     } else if (sort === 'name-desc') {
