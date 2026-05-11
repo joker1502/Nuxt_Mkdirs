@@ -31,7 +31,8 @@ function renderBlock(block: any): string {
 
 function renderTextBlock(block: any): string {
   const style = block.style || 'normal';
-  const text = renderChildren(block.children || []);
+  const markDefs = block.markDefs || [];
+  const text = renderChildren(block.children || [], markDefs);
 
   switch (style) {
     case 'h1':
@@ -49,13 +50,30 @@ function renderTextBlock(block: any): string {
   }
 }
 
-function renderChildren(children: any[]): string {
+function renderChildren(children: any[], markDefs: any[] = []): string {
   return children.map(child => {
     if (child._type === 'span') {
       let text = escapeHtml(child.text || '');
       const marks = child.marks || [];
-      
+
+      // First: wrap in link if applicable (outermost)
+      let linkHref: string | null = null;
+      const otherMarks: string[] = [];
+
       marks.forEach((mark: string) => {
+        if (mark.startsWith('link-')) {
+          const key = mark.slice(5); // Remove 'link-' prefix
+          const def = markDefs.find((d: any) => d._key === key);
+          if (def && def.href) {
+            linkHref = def.href;
+          }
+        } else {
+          otherMarks.push(mark);
+        }
+      });
+
+      // Then: apply other marks (bold, italic, etc.)
+      otherMarks.forEach((mark: string) => {
         switch (mark) {
           case 'strong':
             text = `<strong class="font-semibold">${text}</strong>`;
@@ -72,15 +90,19 @@ function renderChildren(children: any[]): string {
           case 'strike-through':
             text = `<del>${text}</del>`;
             break;
-          default:
-            // Handle links
-            if (mark.startsWith('link-')) {
-              // Link marks are handled separately
-            }
-            break;
         }
       });
-      
+
+      // Finally: wrap in link if needed
+      if (linkHref) {
+        const isInternal = linkHref.startsWith('https://topaiskills.com');
+        const target = isInternal ? '' : ' target="_blank" rel="noopener noreferrer"';
+        const linkClass = isInternal
+          ? 'font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors'
+          : 'font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors';
+        text = `<a href="${escapeHtml(linkHref)}"${target} class="${linkClass}">${text}</a>`;
+      }
+
       return text;
     }
     return '';
