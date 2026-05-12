@@ -191,6 +191,7 @@ onMounted(() => {
                       v-if="post.author?.link"
                       :href="post.author.link"
                       target="_blank"
+                      rel="nofollow noopener noreferrer"
                       class="font-medium link-underline"
                     >
                       {{ post.author.name }}

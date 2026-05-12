@@ -29,7 +29,7 @@ const imageUrl = computed(() => {
     v-if="compact"
     :href="item.link"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="nofollow noopener noreferrer"
     class="group relative block w-full overflow-hidden rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-300"
   >
     <div class="relative aspect-video w-full">
@@ -105,7 +105,7 @@ const imageUrl = computed(() => {
             v-if="item.link"
             :href="item.link"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             class="inline-flex items-center gap-1 text-xs font-medium text-white/80 hover:text-white transition-colors"
           >
             <span>Visit</span>

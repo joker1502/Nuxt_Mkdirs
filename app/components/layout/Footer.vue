@@ -30,7 +30,7 @@ const props = defineProps<Props>();
               v-if="siteConfig.links.github"
               :href="siteConfig.links.github"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noopener noreferrer"
               aria-label="GitHub"
               class="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
             >
@@ -40,7 +40,7 @@ const props = defineProps<Props>();
               v-if="siteConfig.links.twitter"
               :href="siteConfig.links.twitter"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noopener noreferrer"
               aria-label="Twitter"
               class="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
             >
@@ -50,7 +50,7 @@ const props = defineProps<Props>();
               v-if="siteConfig.links.youtube"
               :href="siteConfig.links.youtube"
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noopener noreferrer"
               aria-label="YouTube"
               class="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
             >

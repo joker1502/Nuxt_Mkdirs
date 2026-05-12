@@ -29,7 +29,7 @@ export function markdownToHtml(md: string): string {
   // Links - convert /item/ to /skill/ for internal links
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => {
     const fixedHref = href.replace(/^\/item\//, '/skill/');
-    return `<a href="${fixedHref}" target="_blank" rel="noopener noreferrer" class="link-underline">${text}</a>`;
+    return `<a href="${fixedHref}" target="_blank" rel="nofollow noopener noreferrer" class="link-underline">${text}</a>`;
   });
 
   // Unordered lists - handle nested lists properly

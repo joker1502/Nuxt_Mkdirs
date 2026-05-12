@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
       <a
         :href="heroConfig.label.href"
         target="_blank"
+        rel="nofollow noopener noreferrer"
         class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-4"
       >
         <span class="mr-2">🎉</span>

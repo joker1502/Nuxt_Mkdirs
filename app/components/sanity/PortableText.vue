@@ -96,7 +96,7 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
       // Finally: wrap in link if needed
       if (linkHref) {
         const isInternal = linkHref.startsWith('https://topaiskills.com');
-        const target = isInternal ? '' : ' target="_blank" rel="noopener noreferrer"';
+        const target = isInternal ? '' : ' target="_blank" rel="nofollow noopener noreferrer"';
         const linkClass = isInternal
           ? 'font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors'
           : 'font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors';

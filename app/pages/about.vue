@@ -85,7 +85,7 @@ onMounted(() => {
           <p>
             Have a suggestion or want to submit a tool? We'd love to hear from you.
             Reach out at <a :href="`mailto:${siteConfig.mail}`">{{ siteConfig.mail }}</a>
-            or follow us on <a :href="siteConfig.links.twitter" target="_blank" rel="noopener">Twitter</a>.
+            or follow us on <a :href="siteConfig.links.twitter" target="_blank" rel="nofollow noopener noreferrer">Twitter</a>.
           </p>
 
           <h2>Publisher Information</h2>
