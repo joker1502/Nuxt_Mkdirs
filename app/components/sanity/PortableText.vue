@@ -62,8 +62,7 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
 
       marks.forEach((mark: string) => {
         if (mark.startsWith('link-')) {
-          const key = mark.slice(5); // Remove 'link-' prefix
-          const def = markDefs.find((d: any) => d._key === key);
+          const def = markDefs.find((d: any) => d._key === mark);
           if (def && def.href) {
             linkHref = def.href;
           }
