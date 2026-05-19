@@ -31,7 +31,7 @@ onMounted(() => {
       url: 'https://topaiskills.com',
       email: 'hello@topaiskills.com',
       description: 'Curated directory of AI skills, AI agents, and AI tools for developers and creators.',
-      foundingDate: '2025',
+      foundingDate: '2026',
     },
   };
   const script = document.createElement('script');
@@ -92,10 +92,11 @@ onMounted(() => {
           <p>
             <strong>Top AI Skills</strong><br>
             Contact: hello@topaiskills.com<br>
-            Founded: 2025
+            Founded: 2026
           </p>
         </div>
       </div>
     </LayoutContainer>
   </div>
 </template>
+
