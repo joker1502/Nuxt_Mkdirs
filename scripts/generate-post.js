@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import sanityClient from './lib/sanity-client.js';
-import { generateJSON } from './lib/gemini-client.js';
+import { generateJSON } from './lib/ai-client.js';
 
 function slugify(text) {
   return text
