@@ -143,6 +143,7 @@ WRITING RULES:
   } catch (error) {
     console.error('❌ Blog post generation failed:', error.message);
     console.error(error.stack);
+    process.exit(1);
   }
 }
 

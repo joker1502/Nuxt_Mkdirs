@@ -117,7 +117,7 @@ IMPORTANT:
   } catch (error) {
     console.error('❌ Item generation failed:', error.message);
     console.error(error.stack);
-    // Don't exit with error - let post generation continue
+    process.exit(1);
   }
 }
 
