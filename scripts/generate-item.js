@@ -52,7 +52,7 @@ IMPORTANT:
 - description should be short and punchy
 - The link must be a real, working URL`;
 
-    const data = await generateJSON(prompt);
+    const data = await generateJSON(prompt, 8192);
     console.log(`   Generated: ${data.name}\n`);
 
     // 3. Generate slug and check uniqueness
