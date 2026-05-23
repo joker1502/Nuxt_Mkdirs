@@ -1,5 +1,5 @@
 const OPENCODE_BASE = 'https://opencode.ai/zen/go/v1';
-const OPENCODE_MODEL = 'deepseek-v4-flash';
+const OPENCODE_MODEL = 'deepseek-v4-pro';
 
 /**
  * Generate structured JSON from OpenCode Go (OpenAI-compatible) API with retry logic
