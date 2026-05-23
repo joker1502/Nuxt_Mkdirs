@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
         slug,
         excerpt,
         featured,
-        image {
+        coverImage {
           ...,
           "blurDataURL": asset->metadata.lqip,
         },

@@ -61,7 +61,7 @@ const blogPosts = computed(() => {
     title: post.title,
     slug: post.slug?.current || post.slug,
     excerpt: post.excerpt,
-    image: post.image,
+    image: post.coverImage,
     publishDate: post.publishDate,
     author: post.author?.name || '',
     categories: post.categories?.map((c: any) => c.name) || [],

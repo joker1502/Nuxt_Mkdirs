@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { getSanityImageUrl } from '~/utils/sanity-image';
 
@@ -43,6 +44,53 @@ const posts = computed(() => {
 
 const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
 
+=======
+<script setup lang="ts">
+import { getSanityImageUrl } from '~/utils/sanity-image';
+
+const route = useRoute();
+
+// Fetch blog categories from Sanity
+const { data: categoriesData } = await useFetch('/api/blog/categories');
+
+const categories = computed(() => {
+  if (!categoriesData.value) return [];
+  return categoriesData.value.map((cat: any) => ({
+    _id: cat._id,
+    name: cat.name,
+    slug: cat.slug?.current || cat.slug,
+  }));
+});
+
+// Reactive query params
+const postsQuery = computed(() => ({
+  limit: 6,
+  page: route.query.page || undefined,
+}));
+
+// Fetch blog posts from Sanity
+const { data: postsData } = await useFetch('/api/blog', {
+  query: postsQuery,
+  watch: [postsQuery],
+});
+
+const posts = computed(() => {
+  if (!postsData.value?.posts) return [];
+  return postsData.value.posts.map((post: any) => ({
+    _id: post._id,
+    title: post.title,
+    slug: post.slug?.current || post.slug,
+    excerpt: post.excerpt,
+    coverImage: post.coverImage ? getSanityImageUrl(post.coverImage, { width: 800 }) : '',
+    publishedAt: post.publishDate,
+    author: post.author?.name || '',
+    categories: post.categories?.map((c: any) => c.name) || [],
+  }));
+});
+
+const totalPages = computed(() => postsData.value?.pagination?.totalPages || 1);
+
+>>>>>>> 1c78051 (fix: tutorial coverImage field normalization — all layers)
 useSeoMeta({
   title: 'AI Skills Tutorials | Top AI Skills',
   description: 'Learn AI skills with step-by-step tutorials. From beginner to advanced — master AI tools through hands-on guides and practical examples.',

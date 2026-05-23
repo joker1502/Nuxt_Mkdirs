@@ -15,9 +15,9 @@ const props = defineProps<Props>();
     <!-- Image container -->
     <div v-if="!hideEmptyImage" class="group overflow-hidden relative aspect-[4/3] rounded-lg transition-all">
       <NuxtLink :to="`/tutorial/${post.slug}`">
-        <div v-if="post.image" class="relative w-full h-full">
+        <div v-if="post.coverImage" class="relative w-full h-full">
           <img
-            :src="post.image"
+            :src="post.coverImage"
             :alt="post.title"
             :title="post.title"
             class="object-cover w-full h-full image-scale"

@@ -10,8 +10,8 @@ const { data: post, error } = await useFetch(() => `/api/blog/${slug.value}`);
 
 // Computed values for template
 const imageUrl = computed(() => {
-  if (!post.value?.image) return '';
-  return getSanityImageUrl(post.value.image, { width: 1200 });
+  if (!post.value?.coverImage) return '';
+  return getSanityImageUrl(post.value.coverImage, { width: 1200 });
 });
 
 const authorImageUrl = computed(() => {
@@ -138,7 +138,7 @@ onMounted(() => {
                 <img
                   v-if="imageUrl"
                   :src="imageUrl"
-                  :alt="post.image?.alt || post.title"
+                  :alt="post.coverImage?.alt || post.title"
                   class="w-full h-full object-cover"
                 />
               </div>

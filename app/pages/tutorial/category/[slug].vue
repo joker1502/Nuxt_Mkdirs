@@ -40,7 +40,7 @@ const posts = computed(() => {
     title: post.title,
     slug: post.slug?.current || post.slug,
     excerpt: post.excerpt,
-    image: post.image ? getSanityImageUrl(post.image, { width: 800 }) : '',
+    coverImage: post.coverImage ? getSanityImageUrl(post.coverImage, { width: 800 }) : '',
     publishedAt: post.publishDate,
     author: post.author?.name || '',
     categories: post.categories?.map((c: any) => c.name) || [],
