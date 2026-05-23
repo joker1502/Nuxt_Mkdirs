@@ -7,7 +7,7 @@ const OPENCODE_MODEL = 'deepseek-v4-flash';
  * @param {number} maxTokens - Max output tokens
  * @param {number} retries - Number of retries on failure
  */
-export async function generateJSON(prompt, maxTokens = 4096, retries = 3) {
+export async function generateJSON(prompt, maxTokens = 8192, retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
       const response = await fetch(`${OPENCODE_BASE}/chat/completions`, {
