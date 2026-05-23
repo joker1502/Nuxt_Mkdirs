@@ -1,9 +1,0 @@
-{
-  "name": "topaiskills-daily-scripts",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@sanity/client": "^6.28.0",
-    "uuid": "^10.0.0"
-  }
-}
