@@ -18,7 +18,7 @@ const categories = computed(() => {
 
 // Reactive query params
 const postsQuery = computed(() => ({
-  limit: 6,
+  limit: 8,
   page: route.query.page || undefined,
 }));
 

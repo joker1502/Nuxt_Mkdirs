@@ -22,7 +22,7 @@ const currentCategory = computed(() =>
 
 // Reactive query params
 const postsQuery = computed(() => ({
-  limit: 6,
+  limit: 8,
   category: slug.value,
   page: route.query.page || undefined,
 }));
