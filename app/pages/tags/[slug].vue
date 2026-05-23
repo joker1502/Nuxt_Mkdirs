@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getSanityImageUrl } from '~/utils/sanity-image';
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);
 
@@ -61,7 +62,7 @@ const blogPosts = computed(() => {
     title: post.title,
     slug: post.slug?.current || post.slug,
     excerpt: post.excerpt,
-    image: post.coverImage,
+    coverImage: post.coverImage ? getSanityImageUrl(post.coverImage, { width: 800 }) : '',
     publishDate: post.publishDate,
     author: post.author?.name || '',
     categories: post.categories?.map((c: any) => c.name) || [],
