@@ -85,7 +85,7 @@ WRITING RULES:
 - NO clickbait phrases
 - DO NOT add hashtags at the end`;
 
-    const data = await generateJSON(prompt);
+    const data = await generateJSON(prompt, 8192);
     console.log(`   Title: ${data.title}\n`);
 
     // 3. Check slug uniqueness
