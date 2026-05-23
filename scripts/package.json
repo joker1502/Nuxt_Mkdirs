@@ -1,0 +1,10 @@
+{
+  "name": "topaiskills-daily-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@sanity/client": "^6.28.0",
+    "@google/generative-ai": "^0.21.0",
+    "uuid": "^10.0.0"
+  }
+}
