@@ -118,6 +118,7 @@ useSeoMeta({
         <SharedHeaderSection
           label="FAQ"
           title="Frequently Asked Questions"
+          h-tag="h2"
         />
 
         <div class="w-full max-w-4xl mx-auto">

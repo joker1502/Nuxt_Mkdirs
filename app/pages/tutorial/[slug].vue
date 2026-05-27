@@ -67,10 +67,9 @@ useSeoMeta({
   robots: 'index, follow',
 });
 
-// Inject Article JSON-LD for EEAT (author + publisher)
-onMounted(() => {
-  if (!post.value) return;
-  const articleSchema = {
+// JSON-LD Article structured data (SSR-safe, not onMounted)
+if (post.value) {
+  useJsonLd({
     '@context': 'https://schema.org',
     '@type': 'Article',
     '@id': `https://topaiskills.com/tutorial/${slug.value}#article`,
@@ -97,12 +96,8 @@ onMounted(() => {
       '@type': 'WebPage',
       '@id': `https://topaiskills.com/tutorial/${slug.value}`,
     },
-  };
-  const script = document.createElement('script');
-  script.setAttribute('type', 'application/ld+json');
-  script.textContent = JSON.stringify(articleSchema);
-  document.head.appendChild(script);
-});
+  });
+}
 </script>
 
 <template>

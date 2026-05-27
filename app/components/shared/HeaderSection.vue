@@ -7,9 +7,13 @@ interface Props {
   title?: string;
   subtitle?: string;
   class?: string;
+  /** Heading tag: 'h1' (default) or 'h2' */
+  hTag?: 'h1' | 'h2';
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  hTag: 'h1',
+});
 </script>
 
 <template>
@@ -20,9 +24,9 @@ const props = defineProps<Props>();
     <p v-if="label" class="uppercase tracking-wider text-gradient_indigo-purple font-semibold">
       {{ label }}
     </p>
-    <h2 v-if="title" class="mt-4 px-4 text-2xl md:text-4xl">
+    <component :is="hTag" v-if="title" class="mt-4 px-4 text-2xl md:text-4xl">
       {{ title }}
-    </h2>
+    </component>
     <p v-if="subtitle" class="mt-6 px-4 text-balance text-lg text-foreground/80">
       {{ subtitle }}
     </p>

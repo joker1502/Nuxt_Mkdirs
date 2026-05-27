@@ -80,27 +80,29 @@ useSeoMeta({
   robots: 'index, follow',
 });
 
-// Inject BreadcrumbList JSON-LD for EEAT
-onMounted(() => {
-  if (!item.value) return;
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://topaiskills.com/' },
-      ...(item.value.categories?.[0] ? [{
-        '@type': 'ListItem', position: 2,
-        name: item.value.categories[0].name,
-        item: `https://topaiskills.com/categories/${item.value.categories[0].slug?.current}`,
-      }] : []),
-      { '@type': 'ListItem', position: item.value.categories?.[0] ? 3 : 2, name: item.value.name, item: `https://topaiskills.com/skill/${slug.value}` },
-    ],
-  };
-  const script = document.createElement('script');
-  script.setAttribute('type', 'application/ld+json');
-  script.textContent = JSON.stringify(breadcrumbSchema);
-  document.head.appendChild(script);
+// JSON-LD structured data
+const breadcrumbItems = computed(() => {
+  const items = [{ name: 'Home', url: 'https://topaiskills.com/' }];
+  if (item.value?.categories?.[0]) {
+    items.push({
+      name: item.value.categories[0].name,
+      url: `https://topaiskills.com/categories/${item.value.categories[0].slug?.current}`,
+    });
+  }
+  items.push({ name: item.value?.name || '', url: `https://topaiskills.com/skill/${slug.value}` });
+  return items;
 });
+
+if (item.value) {
+  useBreadcrumbSchema(breadcrumbItems.value);
+  useItemSchema({
+    name: item.value.name || '',
+    description: item.value.description,
+    image: imageUrl.value,
+    url: `https://topaiskills.com/skill/${slug.value}`,
+    category: item.value.categories?.[0]?.name,
+  });
+}
 </script>
 
 <template>

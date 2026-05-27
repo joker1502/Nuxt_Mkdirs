@@ -28,7 +28,7 @@ import { siteConfig } from '~/config/site';
           <div class="text-center space-y-4 p-8">
             <img 
               src="/logo.png" 
-              alt="Logo" 
+              alt="Top AI Skills" 
               class="w-20 h-20 mx-auto rounded-2xl"
             />
             <h2 class="text-2xl font-bold">{{ siteConfig.name }}</h2>

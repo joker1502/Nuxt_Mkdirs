@@ -21,7 +21,7 @@ const iconUrl = computed(() => {
 
 <template>
   <NuxtLink
-    :to="`/skill/${item.slug}`"
+    :to="`/skill/${typeof item.slug === 'string' ? item.slug : item.slug?.current || item.slug}`"
     :class="cn(
       'cursor-pointer border rounded-lg flex flex-col justify-between gap-3 p-4',
       'hover:bg-accent/60 transition-colors duration-300 group'

@@ -21,8 +21,8 @@ const logo = computed(() => {
 <template>
   <img
     :src="logo"
-    alt="Logo"
-    title="Logo"
+    alt="Top AI Skills"
+    title="Top AI Skills"
     width="96"
     height="96"
     :class="cn('size-8 rounded-md', props.class)"

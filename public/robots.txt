@@ -17,4 +17,4 @@ Disallow: /auth/
 Disallow: /api/
 
 # Sitemap location (update with your domain)
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://topaiskills.com/sitemap.xml
