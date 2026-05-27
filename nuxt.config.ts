@@ -1,17 +1,71 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 
-// Trigger rebuild for config changes - TS installed
 export default defineNuxtConfig({
   compatibilityDate: '2025-12-12',
   css: ['./app/assets/css/main.css'],
   devtools: { enabled: true },
 
-  // Cloudflare Pages configuration
+  // ============================================================
+  // 1. DEPLOYMENT — Cloudflare Pages + Hybrid Rendering
+  // ============================================================
   nitro: {
     preset: 'cloudflare_pages',
+
+    // Pre-render static public pages at BUILD TIME
+    // These become pure HTML — zero SSR overhead, max SEO
+    prerender: {
+      crawlLinks: true, // Follow links from pre-rendered pages
+      routes: [
+        '/',
+        '/about',
+        '/pricing',
+        '/privacy',
+        '/terms',
+        '/search',
+        '/categories',
+        '/tags',
+        '/tutorial',
+        '/blog',
+      ],
+    },
+
+    // Gzip static assets
+    compressPublicAssets: true,
   },
-  
+
+  // ============================================================
+  // 2. ROUTE RULES — SSG vs SSR 分界线
+  // ============================================================
+  // 公开页面 → SSG (build time) 或 SSR + CDN cache
+  // 私有页面 → 纯 SSR (no cache)
+  routeRules: {
+    // -- 动态内容页：SSR + SWR 缓存 (CDN 缓存 10-60 分钟) --
+    // 这些页面内容变化不频繁，SWR 大幅减少 Functions 调用
+    '/skill/**':        { swr: 1800 },  // 30min — 技能详情页
+    '/blog/**':         { swr: 3600 },  // 60min — 博客文章
+    '/categories/**':   { swr: 600  },  // 10min — 分类列表
+    '/tags/**':         { swr: 600  },  // 10min — 标签列表
+    '/tutorial/**':     { swr: 3600 },  // 60min — 教程
+    '/collection/**':   { swr: 600  },  // 10min — 集合
+
+    // -- API 路由：不缓存 (数据实时性要求) --
+    '/api/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=0, must-revalidate',
+      },
+    },
+
+    // -- 私有/交互页面：纯 SSR，绝不缓存 --
+    '/auth/**':      { ssr: true },
+    '/dashboard/**': { ssr: true },
+    '/settings/**':  { ssr: true },
+    '/payment/**':   { ssr: true },
+    '/publish/**':   { ssr: true },
+    '/submit/**':    { ssr: true },
+    '/studio/**':    { ssr: true },
+  },
+
   modules: [
     '@nuxthub/core',
     '@nuxtjs/color-mode',
@@ -20,16 +74,13 @@ export default defineNuxtConfig({
     'nuxt-gtag',
   ],
 
-  // Google Analytics 配置
-  // nuxt-gtag 模块会自动从 runtimeConfig.public.googleAnalyticsId 读取配置
+  // Google Analytics
   gtag: {
     enabled: true,
   },
 
-  // Sitemap configuration
-  // https://nuxtseo.com/sitemap/getting-started/installation
+  // Sitemap
   sitemap: {
-    // Exclude admin/dashboard routes from sitemap
     exclude: [
       '/dashboard/**',
       '/studio/**',
@@ -42,28 +93,25 @@ export default defineNuxtConfig({
     ],
     siteUrl: 'https://topaiskills.com',
     discoverImages: true,
-    // Dynamic URLs from sanity data
-    sources: [
-      '/api/__sitemap__/urls',
-    ],
-    // How often to crawl for dynamic URLs
+    sources: ['/api/__sitemap__/urls'],
     autoLastmod: true,
   },
 
-  hub: {
-    // NuxtHub configuration
-    // https://hub.nuxt.com/docs/getting-started/deploy
-  },
+  hub: {},
 
-  // Sanity configuration
+  // ============================================================
+  // 3. SANITY — CDN ENABLED (最大性能提升)
+  // ============================================================
+  // useCdn: false → 每次请求都打 Sanity Live API (~200ms)
+  // useCdn: true  → 走 Sanity CDN (~5ms, 60s TTL)
+  // 对目录站来说 60s 延迟完全可接受
+  // API version 与 sanity/lib/api.ts 保持一致 (2024-08-01)
   sanity: {
-    useCdn: false,
+    useCdn: true,
     projectId: 'isvdg9tz',
     dataset: 'production',
-    apiVersion: '2024-01-01',
+    apiVersion: '2024-08-01',
     token: process.env.NUXT_SANITY_API_TOKEN,
-    // token is only needed for server-side operations
-    // It's a private env var that IS available at build time
   },
 
   colorMode: {
@@ -72,17 +120,11 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
 
-  // Runtime config for environment variables
-  // Nuxt automatically maps NUXT_* env vars to runtimeConfig
-  // https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables
+  // Runtime config
   runtimeConfig: {
-    // Sanity config (used by @nuxtjs/sanity module)
     sanity: {
-      token: '', // NUXT_SANITY_TOKEN
+      token: '',
     },
-
-    // Server-side only (private) - auto-mapped from NUXT_*
-    // e.g., NUXT_SANITY_API_TOKEN -> sanityApiToken
     sanityApiToken: '',
     resendApiKey: '',
     resendEmailFrom: 'onboarding@resend.dev',
@@ -103,8 +145,6 @@ export default defineNuxtConfig({
     openaiApiKey: '',
     aiProvider: 'google',
 
-    // Client-side (public) - auto-mapped from NUXT_PUBLIC_*
-    // e.g., NUXT_PUBLIC_APP_URL -> public.appUrl
     public: {
       appUrl: 'http://localhost:3000',
       sanityProjectId: '',
@@ -115,7 +155,6 @@ export default defineNuxtConfig({
       creemProProductId: '',
       creemSponsorProductId: '',
       googleAnalyticsId: '',
-      // Feature flags (these need special handling for boolean/number)
       supportCategoryGroup: true,
       supportItemIcon: true,
       supportAiSubmit: true,
@@ -123,6 +162,9 @@ export default defineNuxtConfig({
     },
   },
 
+  // ============================================================
+  // 4. APP HEAD — SEO + Fonts
+  // ============================================================
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -141,6 +183,9 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
+        // Google Fonts — 建议后续改为 self-host
+        // TODO: 使用 @nuxt/fonts 或 nuxtjs/google-fonts 模块 self-host 字体
+        // 可消除对 fonts.googleapis.com 的外部依赖，减少 LCP ~300ms
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500;600;700&display=swap' },
