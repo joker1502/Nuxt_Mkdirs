@@ -71,6 +71,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/sanity',
     '@nuxtjs/sitemap',
+    '@nuxt/fonts',
     'nuxt-gtag',
   ],
 
@@ -100,7 +101,19 @@ export default defineNuxtConfig({
   hub: {},
 
   // ============================================================
-  // 3. SANITY — CDN ENABLED (最大性能提升)
+  // 3. FONTS — Self-Hosted (消除 Google Fonts CDN 外部依赖)
+  // ============================================================
+  // @nuxt/fonts downloads Google Fonts during build and serves them locally
+  // Eliminates external DNS + connection to fonts.googleapis.com (LCP -300ms)
+  fonts: {
+    families: [
+      { name: 'Bricolage Grotesque', provider: 'google' },
+      { name: 'Inter', provider: 'google' },
+    ],
+  },
+
+  // ============================================================
+  // 4. SANITY — CDN ENABLED (最大性能提升)
   // ============================================================
   // useCdn: false → 每次请求都打 Sanity Live API (~200ms)
   // useCdn: true  → 走 Sanity CDN (~5ms, 60s TTL)
@@ -163,7 +176,7 @@ export default defineNuxtConfig({
   },
 
   // ============================================================
-  // 4. APP HEAD — SEO + Fonts
+  // 5. APP HEAD — SEO + Fonts (self-hosted via @nuxt/fonts)
   // ============================================================
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -183,12 +196,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
-        // Google Fonts — 建议后续改为 self-host
-        // TODO: 使用 @nuxt/fonts 或 nuxtjs/google-fonts 模块 self-host 字体
-        // 可消除对 fonts.googleapis.com 的外部依赖，减少 LCP ~300ms
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500;600;700&display=swap' },
       ],
     },
   },
