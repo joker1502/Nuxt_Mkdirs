@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     // These become pure HTML — zero SSR overhead, max SEO
     prerender: {
       crawlLinks: true, // Follow links from pre-rendered pages
+      failOnError: false, // Don't fail build if some routes error (they fallback to SSR)
       routes: [
         '/',
         '/about',
