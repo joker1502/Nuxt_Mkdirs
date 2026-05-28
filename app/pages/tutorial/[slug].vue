@@ -32,7 +32,7 @@ const relatedPosts = computed(() => {
     title: p.title,
     slug: p.slug?.current || p.slug,
     excerpt: p.excerpt,
-    image: p.image ? getSanityImageUrl(p.image, { width: 800 }) : '',
+    coverImage: p.coverImage ? getSanityImageUrl(p.coverImage, { width: 800 }) : '',
     publishedAt: p.publishDate,
     author: p.author?.name || '',
     categories: p.categories?.map((c: any) => c.name) || [],
