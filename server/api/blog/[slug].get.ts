@@ -19,7 +19,16 @@ export default defineEventHandler(async (event) => {
       title,
       slug,
       excerpt,
-      body,
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug,
+            "refType": @.reference->_type
+          }
+        }
+      },
       featured,
       coverImage {
         ...,

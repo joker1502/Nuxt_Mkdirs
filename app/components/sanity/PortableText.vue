@@ -61,7 +61,13 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
       const otherMarks: string[] = [];
 
       marks.forEach((mark: string) => {
-        if (mark.startsWith('link-')) {
+        if (mark.startsWith('internalLink-')) {
+          const def = markDefs.find((d: any) => d._key === mark);
+          if (def && def.slug?.current) {
+            const prefix = def.refType === 'item' ? '/skill' : '/tutorial';
+            linkHref = `${prefix}/${def.slug.current}`;
+          }
+        } else if (mark.startsWith('link-')) {
           const def = markDefs.find((d: any) => d._key === mark);
           if (def && def.href) {
             linkHref = def.href;
@@ -94,7 +100,7 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
 
       // Finally: wrap in link if needed
       if (linkHref) {
-        const isInternal = linkHref.startsWith('https://topaiskills.com');
+        const isInternal = linkHref.startsWith('/') || linkHref.startsWith('https://topaiskills.com');
         const target = isInternal ? '' : ' target="_blank" rel="nofollow noopener noreferrer"';
         const linkClass = isInternal
           ? 'font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors'
