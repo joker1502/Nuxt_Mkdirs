@@ -61,17 +61,14 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
       const otherMarks: string[] = [];
 
       marks.forEach((mark: string) => {
-        if (mark.startsWith('internalLink-')) {
-          const def = markDefs.find((d: any) => d._key === mark);
-          if (def && def.slug?.current) {
+        const def = markDefs.find((d: any) => d._key === mark);
+        if (def && def._type === 'internalLink') {
+          if (def.slug?.current) {
             const prefix = def.refType === 'item' ? '/skill' : '/tutorial';
             linkHref = `${prefix}/${def.slug.current}`;
           }
-        } else if (mark.startsWith('link-')) {
-          const def = markDefs.find((d: any) => d._key === mark);
-          if (def && def.href) {
-            linkHref = def.href;
-          }
+        } else if (def && def.href) {
+          linkHref = def.href;
         } else {
           otherMarks.push(mark);
         }
