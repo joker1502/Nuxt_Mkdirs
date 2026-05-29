@@ -1,6 +1,9 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": ["README.md", "AI_SETUP.md", "CONTRIBUTING.md"],
+  "skills": {
+    "paths": ["/Users/ff/.workbuddy/skills"]
+  },
   "command": {
     "dev": {
       "template": "pnpm dev",
