@@ -2,7 +2,12 @@
  * Get items list from Sanity
  */
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
+  const url = getRequestURL(event);
+  const rawQuery = getQuery(event);
+  console.log('[items API] URL:', url.toString());
+  console.log('[items API] Raw query:', JSON.stringify(rawQuery));
+  console.log('[items API] All keys:', Object.keys(rawQuery));
+  const query = rawQuery;
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 12;
   const category = query.category as string | undefined;
