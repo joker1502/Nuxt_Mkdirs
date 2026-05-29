@@ -91,7 +91,7 @@ useSeoMeta({
 
         <!-- Category Filter -->
         <div class="w-full">
-          <CategoryFilter :categories="categories" url-prefix="/skills/category" />
+          <CategoryFilter :categories="categories" url-prefix="/skills/category" all-url="/skills" />
         </div>
       </div>
     </div>
