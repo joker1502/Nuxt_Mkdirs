@@ -40,21 +40,21 @@ export default defineNuxtConfig({
   routeRules: {
     // -- 动态内容页：SSR + SWR 缓存 (CDN 缓存 10-60 分钟) --
     // 这些页面内容变化不频繁，SWR 大幅减少 Functions 调用
-    '/':               { swr: 600  },  // 10min — 首页 (动态内容,不预渲染)
-    '/skills':         { swr: 600  },  // 10min — 技能列表首页
-    '/skills/**':      { swr: 600  },  // 10min — 技能详情+分类页
+    '/':               { swr: 60   },  // 1min — 首页 (动态内容,不预渲染)
+    '/skills':         { swr: 60   },  // 1min — 技能列表首页
+    '/skills/**':      { swr: 60   },  // 1min — 技能详情+分类页
     '/blog/**':         { swr: 3600 },  // 60min — 博客文章
     '/categories':      { redirect: '/skills' },
     '/categories/**':   { redirect: '/skills' },
     '/skill':           { redirect: '/skills' },
     '/skill/**':        { redirect: '/skills' },
-    '/tags':            { swr: 600  },  // 10min — 标签列表首页
-    '/tags/**':         { swr: 600  },  // 10min — 标签详情页
-    '/tutorials':      { swr: 3600 },  // 60min — 教程首页
-    '/tutorials/**':   { swr: 3600 },  // 60min — 教程详情+分类
+    '/tags':            { swr: 60   },  // 1min — 标签列表首页
+    '/tags/**':         { swr: 60   },  // 1min — 标签详情页
+    '/tutorials':      { swr: 300  },  // 5min — 教程首页
+    '/tutorials/**':   { swr: 300  },  // 5min — 教程详情+分类
     '/tutorial':       { redirect: '/tutorials' },
     '/tutorial/**':    { redirect: '/tutorials' },
-    '/collection/**':   { swr: 600  },  // 10min — 集合
+    '/collection/**':   { swr: 60   },  // 1min — 集合
 
     // -- API 路由：不缓存 (数据实时性要求) --
     '/blog':          { redirect: '/tutorials' },
