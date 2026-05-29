@@ -29,6 +29,10 @@
       "description": "查看项目环境变量模板",
       "prompt": "读取 .env.example 文件，列出所有需要配置的环境变量。在帮助用户配置时，引用 nuxt.config.ts 中 runtimeConfig 的对应关系。"
     },
+    "fetch-icons": {
+      "template": "export $(grep -v '^#' .env | xargs) && npx tsx scripts/fetch-icons.ts",
+      "description": "从 GitHub 自动获取 Skill 图标并上传到 Sanity"
+    },
     "ai-test": {
       "template": "curl -X POST https://topaiskills.com/api/ai/autofill -H 'Content-Type: application/json' -d '{\"url\": \"$1\"}'",
       "description": "测试 AI 自动填充功能 (需传入 URL 参数)"
