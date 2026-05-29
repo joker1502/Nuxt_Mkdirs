@@ -44,6 +44,10 @@
       "*": "ask"
     },
     "read": "allow",
-    "edit": "allow"
+    "edit": "allow",
+    "external_directory": {
+      "~/.workbuddy/skills/**": "allow",
+      "*": "ask"
+    }
   }
 }
