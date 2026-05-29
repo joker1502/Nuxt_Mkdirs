@@ -2,22 +2,10 @@
  * Get items list from Sanity
  */
 export default defineEventHandler(async (event) => {
-  const url = getRequestURL(event);
-  const rawQuery = getQuery(event);
-  console.log('[items API] URL:', url.toString());
-  console.log('[items API] Raw query:', JSON.stringify(rawQuery));
-  console.log('[items API] All keys:', Object.keys(rawQuery));
-  const query = rawQuery;
+  const query = getQuery(event);
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 12;
   const category = query.category as string | undefined;
-    
-    // DEBUG: log category filter
-    if (category) {
-      console.log('[items API] Filtering by category:', category);
-    } else {
-      console.log('[items API] No category filter');
-    }
   const tag = query.tag as string | undefined;
   const sort = query.sort as string | undefined;
   const filter = query.f as string | undefined;
@@ -133,12 +121,6 @@ export default defineEventHandler(async (event) => {
         limit,
         total,
         totalPages: Math.ceil(total / limit),
-      },
-      _debug: {
-        category: category || null,
-        groqFilter: category ? `$$category in categories[]->slug.current (param: "${category}")` : 'no filter',
-        hasParams: Object.keys(params).length > 0,
-        paramsKeys: Object.keys(params),
       },
     };
   } catch (error) {
