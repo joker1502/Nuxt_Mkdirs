@@ -92,7 +92,7 @@ useSeoMeta({
 
         <!-- Category Filter -->
         <div class="w-full">
-          <CategoryFilter :categories="categories" />
+          <CategoryFilter :categories="categories" query-mode />
         </div>
       </div>
     </div>

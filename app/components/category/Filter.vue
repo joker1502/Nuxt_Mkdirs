@@ -4,16 +4,18 @@ import type { CategoryInfo } from '~/types';
 interface Props {
   categories: CategoryInfo[];
   urlPrefix?: string;
+  queryMode?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   urlPrefix: '/categories',
+  queryMode: false,
 });
 
 const route = useRoute();
 const router = useRouter();
 
-const currentSlug = computed(() => route.params.slug as string || '');
+const currentSlug = computed(() => props.queryMode ? (route.query.category as string || '') : (route.params.slug as string || ''));
 const selectedSort = computed(() => (route.query.sort as string) || '');
 
 const sortOptions = [
@@ -46,7 +48,7 @@ function handleSortChange(value: string) {
         <div class="flex-1 overflow-x-auto pb-2">
           <ul class="flex gap-x-2">
             <li>
-              <NuxtLink :to="urlPrefix">
+              <NuxtLink v-if="!queryMode" :to="urlPrefix">
                 <UiButton
                   :variant="!currentSlug ? 'default' : 'outline'"
                   size="sm"
@@ -55,9 +57,13 @@ function handleSortChange(value: string) {
                   All
                 </UiButton>
               </NuxtLink>
+              <button v-else @click="router.push({ query: { ...route.query, category: undefined, page: undefined } })" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 py-3 shrink-0"
+                :class="!currentSlug ? 'bg-primary text-primary-foreground border-primary' : ''">
+                All
+              </button>
             </li>
             <li v-for="category in categories" :key="category._id">
-              <NuxtLink :to="`${urlPrefix}/${category.slug}`">
+              <NuxtLink v-if="!queryMode" :to="`${urlPrefix}/${category.slug}`">
                 <UiButton
                   :variant="currentSlug === category.slug ? 'default' : 'outline'"
                   size="sm"
@@ -66,6 +72,10 @@ function handleSortChange(value: string) {
                   {{ category.name }}
                 </UiButton>
               </NuxtLink>
+              <button v-else @click="router.push({ query: { ...route.query, category: category.slug === currentSlug ? undefined : category.slug, page: undefined } })" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 py-3 shrink-0"
+                :class="currentSlug === category.slug ? 'bg-primary text-primary-foreground border-primary' : ''">
+                {{ category.name }}
+              </button>
             </li>
           </ul>
         </div>
@@ -88,7 +98,7 @@ function handleSortChange(value: string) {
       <div class="overflow-x-auto pb-2">
         <ul class="flex gap-x-2">
           <li>
-            <NuxtLink :to="urlPrefix">
+            <NuxtLink v-if="!queryMode" :to="urlPrefix">
               <UiButton
                 :variant="!currentSlug ? 'default' : 'outline'"
                 size="sm"
@@ -97,9 +107,13 @@ function handleSortChange(value: string) {
                 All
               </UiButton>
             </NuxtLink>
+            <button v-else @click="router.push({ query: { ...route.query, category: undefined, page: undefined } })" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 py-3"
+              :class="!currentSlug ? 'bg-primary text-primary-foreground border-primary' : ''">
+              All
+            </button>
           </li>
           <li v-for="category in categories" :key="category._id">
-            <NuxtLink :to="`${urlPrefix}/${category.slug}`">
+            <NuxtLink v-if="!queryMode" :to="`${urlPrefix}/${category.slug}`">
               <UiButton
                 :variant="currentSlug === category.slug ? 'default' : 'outline'"
                 size="sm"
@@ -108,6 +122,10 @@ function handleSortChange(value: string) {
                 {{ category.name }}
               </UiButton>
             </NuxtLink>
+            <button v-else @click="router.push({ query: { ...route.query, category: category.slug === currentSlug ? undefined : category.slug, page: undefined } })" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 py-3"
+              :class="currentSlug === category.slug ? 'bg-primary text-primary-foreground border-primary' : ''">
+              {{ category.name }}
+            </button>
           </li>
         </ul>
       </div>
