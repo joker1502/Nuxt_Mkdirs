@@ -236,7 +236,7 @@ if (post.value) {
           <div class="flex items-center gap-2">
             <FileText class="w-4 h-4 text-indigo-500" />
             <h2 class="text-lg tracking-wider font-semibold text-gradient_indigo-purple">
-              More Posts
+              More Tutorials
             </h2>
           </div>
 

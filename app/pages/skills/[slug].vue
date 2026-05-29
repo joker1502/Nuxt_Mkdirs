@@ -254,7 +254,7 @@ if (item.value) {
         <div class="flex items-center gap-2">
           <LayoutGrid class="w-4 h-4 text-indigo-500" />
           <h2 class="text-lg tracking-wider font-semibold text-gradient_indigo-purple">
-            More Products
+            More Skills
           </h2>
         </div>
         <div class="mt-4">
