@@ -129,6 +129,12 @@ export default defineEventHandler(async (event) => {
         total,
         totalPages: Math.ceil(total / limit),
       },
+      _debug: {
+        category: category || null,
+        groqFilter: category ? `$$category in categories[]->slug.current (param: "${category}")` : 'no filter',
+        hasParams: Object.keys(params).length > 0,
+        paramsKeys: Object.keys(params),
+      },
     };
   } catch (error) {
     console.error('Error fetching items:', error);
