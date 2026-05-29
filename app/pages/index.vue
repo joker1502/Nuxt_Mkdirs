@@ -2,10 +2,10 @@
 const route = useRoute();
 
 // Reactive query params for items API
+// NOTE: category filter is done client-side due to server API param issue
 const itemsQuery = computed(() => ({
   limit: 12,
   q: route.query.q || undefined,
-  category: route.query.category || undefined,
   tag: route.query.tag || undefined,
   sort: route.query.sort || undefined,
   f: route.query.f || undefined,
@@ -18,9 +18,12 @@ const { data: itemsData } = await useFetch('/api/items', {
   watch: [itemsQuery],
 });
 
+// Client-side category filter
+const activeCategory = computed(() => route.query.category || null);
+
 const items = computed(() => {
   if (!itemsData.value?.items) return [];
-  return itemsData.value.items.map((item: any) => ({
+  let result = itemsData.value.items.map((item: any) => ({
     _id: item._id,
     name: item.name,
     slug: item.slug?.current || item.slug,
@@ -31,7 +34,15 @@ const items = computed(() => {
     featured: item.featured,
     tags: item.tags?.map((t: any) => t.name) || [],
     category: item.categories?.[0]?.name || '',
+    categorySlug: item.categories?.[0]?.slug?.current || '',
   }));
+  
+  // Client-side category filter
+  if (activeCategory.value) {
+    result = result.filter(item => item.categorySlug === activeCategory.value);
+  }
+  
+  return result;
 });
 
 const totalPages = computed(() => itemsData.value?.pagination?.totalPages || 1);
