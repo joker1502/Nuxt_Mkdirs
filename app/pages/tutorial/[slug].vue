@@ -10,8 +10,8 @@ const { data: post, error } = await useFetch(() => `/api/blog/${slug.value}`);
 
 // Computed values for template
 const imageUrl = computed(() => {
-  if (!post.value?.coverImage) return '';
-  return getSanityImageUrl(post.value.coverImage, { width: 1200 });
+  if (!post.value?.image) return '';
+  return getSanityImageUrl(post.value.image, { width: 1200 });
 });
 
 const authorImageUrl = computed(() => {
@@ -32,7 +32,7 @@ const relatedPosts = computed(() => {
     title: p.title,
     slug: p.slug?.current || p.slug,
     excerpt: p.excerpt,
-    coverImage: p.coverImage ? getSanityImageUrl(p.coverImage, { width: 800 }) : '',
+    coverImage: p.image ? getSanityImageUrl(p.image, { width: 800 }) : '',
     publishedAt: p.publishDate,
     author: p.author?.name || '',
     categories: p.categories?.map((c: any) => c.name) || [],
@@ -133,7 +133,7 @@ if (post.value) {
                 <img
                   v-if="imageUrl"
                   :src="imageUrl"
-                  :alt="post.coverImage?.alt || post.title"
+                  :alt="post.image?.alt || post.title"
                   class="w-full h-full object-cover"
                 />
               </div>
