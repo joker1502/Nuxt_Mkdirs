@@ -18,12 +18,25 @@ const { data: itemsData } = await useFetch('/api/items', {
   watch: [itemsQuery],
 });
 
-// Client-side category filter
-const activeCategory = computed(() => route.query.category || null);
-
 const items = computed(() => {
   if (!itemsData.value?.items) return [];
-  let result = itemsData.value.items.map((item: any) => ({
+  
+  // Determine active category from URL
+  const activeCat = route.query.category || null;
+  
+  // Filter raw items by category slug, then map
+  let filtered = itemsData.value.items;
+  if (activeCat) {
+    filtered = filtered.filter((item: any) => {
+      const cats = item.categories || [];
+      return cats.some((c: any) => {
+        const slug = c.slug?.current || c.slug || '';
+        return slug === activeCat;
+      });
+    });
+  }
+  
+  return filtered.map((item: any) => ({
     _id: item._id,
     name: item.name,
     slug: item.slug?.current || item.slug,
@@ -34,15 +47,7 @@ const items = computed(() => {
     featured: item.featured,
     tags: item.tags?.map((t: any) => t.name) || [],
     category: item.categories?.[0]?.name || '',
-    categorySlug: item.categories?.[0]?.slug?.current || '',
   }));
-  
-  // Client-side category filter
-  if (activeCategory.value) {
-    result = result.filter(item => item.categorySlug === activeCategory.value);
-  }
-  
-  return result;
 });
 
 const totalPages = computed(() => itemsData.value?.pagination?.totalPages || 1);
