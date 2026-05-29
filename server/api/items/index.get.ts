@@ -6,6 +6,13 @@ export default defineEventHandler(async (event) => {
   const page = Number(query.page) || 1;
   const limit = Number(query.limit) || 12;
   const category = query.category as string | undefined;
+    
+    // DEBUG: log category filter
+    if (category) {
+      console.log('[items API] Filtering by category:', category);
+    } else {
+      console.log('[items API] No category filter');
+    }
   const tag = query.tag as string | undefined;
   const sort = query.sort as string | undefined;
   const filter = query.f as string | undefined;
