@@ -64,7 +64,7 @@ useSeoMeta({
   ogTitle: () => item.value?.name ? `${item.value.name} | Top AI Skills` : 'AI Skill | Top AI Skills',
   ogDescription: () => item.value?.description || 'View this AI skill and learn more.',
   ogImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
-  ogUrl: () => `https://topaiskills.com/skill/${slug.value}`,
+  ogUrl: () => `https://topaiskills.com/skills/${slug.value}`,
   ogSiteName: 'Top AI Skills',
   ogLocale: 'en_US',
   ogType: 'article',
@@ -82,10 +82,10 @@ const breadcrumbItems = computed(() => {
   if (item.value?.categories?.[0]) {
     items.push({
       name: item.value.categories[0].name,
-      url: `https://topaiskills.com/categories/${item.value.categories[0].slug?.current}`,
+      url: `https://topaiskills.com/skills/${item.value.categories[0].slug?.current}`,
     });
   }
-  items.push({ name: item.value?.name || '', url: `https://topaiskills.com/skill/${slug.value}` });
+  items.push({ name: item.value?.name || '', url: `https://topaiskills.com/skills/${slug.value}` });
   return items;
 });
 
@@ -95,7 +95,7 @@ if (item.value) {
     name: item.value.name || '',
     description: item.value.description,
     image: imageUrl.value || 'https://topaiskills.com/logo.png',
-    url: `https://topaiskills.com/skill/${slug.value}`,
+    url: `https://topaiskills.com/skills/${slug.value}`,
     category: item.value.categories?.[0]?.name,
   });
 }
@@ -114,7 +114,7 @@ if (item.value) {
             <span>/</span>
             <NuxtLink 
               v-if="item.categories?.[0]" 
-              :to="`/categories/${item.categories[0].slug?.current}`"
+              :to="`/skills/${item.categories[0].slug?.current}`"
               class="hover:text-foreground"
             >
               {{ item.categories[0].name }}
@@ -221,7 +221,7 @@ if (item.value) {
               <ul class="flex flex-wrap gap-4">
                 <li v-for="category in item.categories" :key="category._id">
                   <NuxtLink
-                    :to="`/categories/${category.slug?.current}`"
+                    :to="`/skills/${category.slug?.current}`"
                     class="text-sm link-underline"
                   >
                     {{ category.name }}

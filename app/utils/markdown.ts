@@ -26,9 +26,9 @@ export function markdownToHtml(md: string): string {
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
 
-  // Links - convert /item/ to /skill/ for internal links
+  // Links - convert /item/ to /skills/ for internal links
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => {
-    const fixedHref = href.replace(/^\/item\//, '/skill/');
+    const fixedHref = href.replace(/^\/item\//, '/skills/');
     return `<a href="${fixedHref}" target="_blank" rel="nofollow noopener noreferrer" class="link-underline">${text}</a>`;
   });
 

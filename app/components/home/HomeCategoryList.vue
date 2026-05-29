@@ -15,7 +15,7 @@ defineProps<Props>();
       <NuxtLink
         v-for="category in categories"
         :key="category._id"
-        :to="`/categories/${category.slug}`"
+        :to="`/skills/${category.slug}`"
         class="group flex flex-col items-center justify-center p-6 rounded-lg border bg-card hover:bg-accent transition-colors"
       >
         <span class="text-lg font-medium group-hover:text-primary transition-colors">

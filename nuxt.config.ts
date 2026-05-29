@@ -43,9 +43,13 @@ export default defineNuxtConfig({
   routeRules: {
     // -- 动态内容页：SSR + SWR 缓存 (CDN 缓存 10-60 分钟) --
     // 这些页面内容变化不频繁，SWR 大幅减少 Functions 调用
-    '/skill/**':        { swr: 600  },  // 10min — 技能列表+详情页
+    '/skills':         { swr: 600  },  // 10min — 技能列表首页
+    '/skills/**':      { swr: 600  },  // 10min — 技能详情页
     '/blog/**':         { swr: 3600 },  // 60min — 博客文章
-    '/categories/**':   { swr: 600  },  // 10min — 分类列表
+    '/categories':      { redirect: '/skills' },
+    '/categories/**':   { redirect: '/skills' },
+    '/skill':           { redirect: '/skills' },
+    '/skill/**':        { redirect: '/skills' },
     '/tags':            { swr: 600  },  // 10min — 标签列表首页
     '/tags/**':         { swr: 600  },  // 10min — 标签详情页
     '/tutorial/**':     { swr: 3600 },  // 60min — 教程

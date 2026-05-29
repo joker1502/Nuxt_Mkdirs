@@ -9,7 +9,7 @@ export const marketingConfig: MarketingConfig = {
     },
     {
       title: "Skills",
-      href: "/categories",
+      href: "/skills",
       icon: "category",
     },
     {

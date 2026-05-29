@@ -29,7 +29,7 @@ export default defineSitemapEventHandler(async (event) => {
   const urls = [
     // Static pages
     { loc: '/', lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 },
-    { loc: '/categories', changefreq: 'weekly', priority: 0.9 },
+    { loc: '/skills', changefreq: 'weekly', priority: 0.9 },
     { loc: '/tags', changefreq: 'weekly', priority: 0.7 },
     { loc: '/tutorial', changefreq: 'daily', priority: 0.8 },
     { loc: '/about', changefreq: 'monthly', priority: 0.3 },
@@ -38,18 +38,10 @@ export default defineSitemapEventHandler(async (event) => {
 
     // Dynamic items (skills)
     ...items.map((item: any) => ({
-      loc: `/skill/${item.slug}`,
+      loc: `/skills/${item.slug}`,
       lastmod: item._updatedAt,
       changefreq: 'weekly' as const,
       priority: 0.8,
-    })),
-
-    // Dynamic categories
-    ...categories.map((cat: any) => ({
-      loc: `/categories/${cat.slug}`,
-      lastmod: cat._updatedAt,
-      changefreq: 'weekly' as const,
-      priority: 0.7,
     })),
 
     // Dynamic tags

@@ -18,6 +18,7 @@ const categories = computed(() => {
 const itemsQuery = computed(() => ({
   limit: 12,
   page: route.query.page || undefined,
+  category: route.query.category || undefined,
 }));
 
 // Fetch items from Sanity
@@ -70,9 +71,9 @@ const sponsorItem = computed(() => {
 });
 
 useSeoMeta({
-  title: 'Skills | Top AI Skills',
+  title: 'AI Skills | Top AI Skills',
   description: 'Browse the best AI Skills. Find and compare top AI tools across every category.',
-  ogTitle: 'Skills | Top AI Skills',
+  ogTitle: 'AI Skills | Top AI Skills',
   ogDescription: 'Browse the best AI Skills. Find and compare top AI tools across every category.',
   keywords: 'AI Skills, browse AI skills, top AI Skills list, AI tools directory',
   twitterCard: 'summary_large_image',
@@ -124,7 +125,7 @@ useSeoMeta({
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination route-prefix="/skill" :total-pages="totalPages" />
+          <SharedPagination route-prefix="/skills" :total-pages="totalPages" />
         </div>
       </template>
     </LayoutContainer>
