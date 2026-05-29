@@ -39,7 +39,7 @@ const itemLink = computed(() => {
 // skills.sh URL
 const skillsShLink = computed(() => {
   if (!item.value?.skillsShSlug) return '';
-  return `https://skills.sh/skills/${item.value.skillsShSlug}`;
+  return `https://skills.sh/${item.value.skillsShSlug}`;
 });
 
 // Related items
