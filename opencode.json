@@ -30,7 +30,7 @@
       "prompt": "读取 .env.example 文件，列出所有需要配置的环境变量。在帮助用户配置时，引用 nuxt.config.ts 中 runtimeConfig 的对应关系。"
     },
     "fetch-icons": {
-      "template": "export $(grep -v '^#' .env | xargs) && npx tsx scripts/fetch-icons.ts",
+      "template": "export NUXT_SANITY_API_TOKEN=$(grep NUXT_SANITY_API_TOKEN .env | cut -d= -f2-) && npx tsx scripts/fetch-icons.ts",
       "description": "从 GitHub 自动获取 Skill 图标并上传到 Sanity"
     },
     "ai-test": {

@@ -5,7 +5,7 @@ const client = createClient({
   projectId: 'isvdg9tz',
   dataset: 'production',
   apiVersion: '2024-08-01',
-  token: process.env.SANITY_API_TOKEN,
+  token: process.env.NUXT_SANITY_API_TOKEN || process.env.SANITY_API_TOKEN,
   useCdn: false,
 })
 
