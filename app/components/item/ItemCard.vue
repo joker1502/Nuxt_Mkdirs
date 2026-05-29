@@ -12,9 +12,9 @@ const props = defineProps<Props>();
 
 const iconUrl = computed(() => {
   const ic = props.item.icon as any;
-  if (ic?.asset) {
-    return getSanityImageUrl(ic, { width: 64 });
-  }
+  if (!ic) return '';
+  if (ic.url) return ic.url;
+  if (ic.asset) return getSanityImageUrl(ic, { width: 64 });
   return '';
 });
 

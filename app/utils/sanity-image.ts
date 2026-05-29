@@ -34,8 +34,9 @@ export function getSanityImageUrl(image: any, options?: { width?: number }): str
  * Generate Sanity icon URL (smaller size)
  */
 export function getSanityIconUrl(image: any, size: number = 64): string {
-  if (!image || !image.asset) return '';
-  
+  if (!image) return '';
+  if (image.url) return image.url;
+
   const builder = getImageBuilder();
   return builder.image(image).auto('format').width(size).height(size).url();
 }
