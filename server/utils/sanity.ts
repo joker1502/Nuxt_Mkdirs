@@ -11,7 +11,7 @@ export const sanityClient = createClient({
   projectId: config.public.sanityProjectId,
   dataset: config.public.sanityDataset,
   apiVersion: '2024-01-01',
-  useCdn: process.env.NODE_ENV === 'production',
+  useCdn: false,
   token: config.sanityApiToken,
 });
 
