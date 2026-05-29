@@ -80,7 +80,7 @@ useSeoMeta({
 
         <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination route-prefix="/tutorial" :total-pages="totalPages" />
+          <SharedPagination route-prefix="/tutorials" :total-pages="totalPages" />
         </div>
       </template>
     </LayoutContainer>

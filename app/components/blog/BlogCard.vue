@@ -14,7 +14,7 @@ const props = defineProps<Props>();
   <div class="group cursor-pointer flex flex-col gap-4">
     <!-- Image container -->
     <div v-if="!hideEmptyImage" class="group overflow-hidden relative aspect-[4/3] rounded-lg transition-all">
-      <NuxtLink :to="`/tutorial/${post.slug}`">
+      <NuxtLink :to="`/tutorials/${post.slug}`">
         <div v-if="post.coverImage" class="relative w-full h-full">
           <img
             :src="post.coverImage"
@@ -46,7 +46,7 @@ const props = defineProps<Props>();
       <div>
         <!-- Post title -->
         <h3 class="text-lg line-clamp-2 font-medium">
-          <NuxtLink :to="`/tutorial/${post.slug}`">
+          <NuxtLink :to="`/tutorials/${post.slug}`">
             <span
               class="bg-gradient-to-r from-green-200 to-green-100 
                 bg-[length:0px_10px] bg-left-bottom bg-no-repeat

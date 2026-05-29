@@ -64,7 +64,7 @@ function renderChildren(children: any[], markDefs: any[] = []): string {
         const def = markDefs.find((d: any) => d._key === mark);
         if (def && def._type === 'internalLink') {
           if (def.slug?.current) {
-            const prefix = def.refType === 'item' ? '/skill' : '/tutorial';
+            const prefix = def.refType === 'item' ? '/skill' : '/tutorials';
             linkHref = `${prefix}/${def.slug.current}`;
           }
         } else if (def && def.href) {

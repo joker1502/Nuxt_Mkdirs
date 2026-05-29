@@ -31,7 +31,7 @@ export default defineSitemapEventHandler(async (event) => {
     { loc: '/', lastmod: new Date().toISOString(), changefreq: 'daily', priority: 1.0 },
     { loc: '/skills', changefreq: 'weekly', priority: 0.9 },
     { loc: '/tags', changefreq: 'weekly', priority: 0.7 },
-    { loc: '/tutorial', changefreq: 'daily', priority: 0.8 },
+    { loc: '/tutorials', changefreq: 'daily', priority: 0.8 },
     { loc: '/about', changefreq: 'monthly', priority: 0.3 },
     { loc: '/privacy', changefreq: 'monthly', priority: 0.1 },
     { loc: '/terms', changefreq: 'monthly', priority: 0.1 },
@@ -54,7 +54,7 @@ export default defineSitemapEventHandler(async (event) => {
 
     // Dynamic blog posts
     ...blogPosts.map((post: any) => ({
-      loc: `/tutorial/${post.slug}`,
+      loc: `/tutorials/${post.slug}`,
       lastmod: post._updatedAt,
       changefreq: 'monthly' as const,
       priority: 0.6,
@@ -62,7 +62,7 @@ export default defineSitemapEventHandler(async (event) => {
 
     // Dynamic blog categories
     ...blogCategories.map((cat: any) => ({
-      loc: `/tutorial/category/${cat.slug}`,
+      loc: `/tutorials/category/${cat.slug}`,
       lastmod: cat._updatedAt,
       changefreq: 'weekly' as const,
       priority: 0.4,

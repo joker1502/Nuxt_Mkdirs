@@ -11,14 +11,14 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  urlPrefix: '/tutorial',
+  urlPrefix: '/tutorials',
 });
 
 const route = useRoute();
 
 const currentSlug = computed(() => {
   const path = route.path;
-  if (path.includes('/tutorial/category/')) {
+  if (path.includes('/tutorials/category/')) {
     return route.params.slug as string;
   }
   return '';

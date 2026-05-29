@@ -26,7 +26,7 @@ export default defineNuxtConfig({
         '/search',
         '/categories',
         '/tags',
-        '/tutorial',
+        '/tutorials',
         '/blog',
       ],
     },
@@ -52,12 +52,15 @@ export default defineNuxtConfig({
     '/skill/**':        { redirect: '/skills' },
     '/tags':            { swr: 600  },  // 10min — 标签列表首页
     '/tags/**':         { swr: 600  },  // 10min — 标签详情页
-    '/tutorial/**':     { swr: 3600 },  // 60min — 教程
+    '/tutorials':      { swr: 3600 },  // 60min — 教程首页
+    '/tutorials/**':   { swr: 3600 },  // 60min — 教程详情+分类
+    '/tutorial':       { redirect: '/tutorials' },
+    '/tutorial/**':    { redirect: '/tutorials' },
     '/collection/**':   { swr: 600  },  // 10min — 集合
 
     // -- API 路由：不缓存 (数据实时性要求) --
-    '/blog':          { redirect: '/tutorial' },
-    '/blog/**':       { redirect: '/tutorial/**' },
+    '/blog':          { redirect: '/tutorials' },
+    '/blog/**':       { redirect: '/tutorials' },
 
     '/api/**': {
       headers: {

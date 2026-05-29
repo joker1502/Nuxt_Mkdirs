@@ -55,7 +55,7 @@ useSeoMeta({
   ogTitle: () => `${post.value?.title || 'Tutorial'} | Top AI Skills`,
   ogDescription: () => post.value?.excerpt || 'Read this tutorial on Top AI Skills.',
   ogImage: () => imageUrl.value || 'https://topaiskills.com/logo.png',
-  ogUrl: () => `https://topaiskills.com/tutorial/${slug.value}`,
+  ogUrl: () => `https://topaiskills.com/tutorials/${slug.value}`,
   ogSiteName: 'Top AI Skills',
   ogLocale: 'en_US',
   ogType: 'article',
@@ -72,7 +72,7 @@ if (post.value) {
   useJsonLd({
     '@context': 'https://schema.org',
     '@type': 'Article',
-    '@id': `https://topaiskills.com/tutorial/${slug.value}#article`,
+    '@id': `https://topaiskills.com/tutorials/${slug.value}#article`,
     headline: post.value.title,
     description: post.value.excerpt,
     image: imageUrl.value || 'https://topaiskills.com/logo.png',
@@ -94,7 +94,7 @@ if (post.value) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://topaiskills.com/tutorial/${slug.value}`,
+      '@id': `https://topaiskills.com/tutorials/${slug.value}`,
     },
   });
 }
@@ -114,11 +114,11 @@ if (post.value) {
               <nav class="flex items-center gap-2 text-sm text-muted-foreground">
                 <NuxtLink to="/" class="hover:text-foreground">Home</NuxtLink>
                 <span>/</span>
-                <NuxtLink to="/tutorial" class="hover:text-foreground">Tutorials</NuxtLink>
+                <NuxtLink to="/tutorials" class="hover:text-foreground">Tutorials</NuxtLink>
                 <template v-if="post.categories?.[0]">
                   <span>/</span>
                   <NuxtLink
-                    :to="`/tutorial/category/${post.categories[0].slug?.current || post.categories[0].slug}`"
+                    :to="`/tutorials/category/${post.categories[0].slug?.current || post.categories[0].slug}`"
                     class="hover:text-foreground"
                   >
                     {{ post.categories[0].name }}
@@ -152,7 +152,7 @@ if (post.value) {
             </div>
 
             <div class="flex items-center justify-start mt-16">
-            <NuxtLink to="/tutorial">
+            <NuxtLink to="/tutorials">
                 <UiButton variant="outline" class="gap-2">
                   <ArrowLeft class="size-4" />
                   All Posts
@@ -204,7 +204,7 @@ if (post.value) {
                 <ul class="flex flex-wrap gap-4">
                   <li v-for="category in post.categories" :key="category._id">
                     <NuxtLink
-                      :to="`/tutorial/category/${category.slug?.current || category.slug}`"
+                      :to="`/tutorials/category/${category.slug?.current || category.slug}`"
                       class="text-sm link-underline"
                     >
                       {{ category.name }}
@@ -249,7 +249,7 @@ if (post.value) {
         title="Post not found"
         description="The tutorial you're looking for doesn't exist."
       >
-        <NuxtLink to="/tutorial" class="mt-4">
+        <NuxtLink to="/tutorials" class="mt-4">
           <UiButton>Browse all posts</UiButton>
         </NuxtLink>
       </SharedEmptyState>
