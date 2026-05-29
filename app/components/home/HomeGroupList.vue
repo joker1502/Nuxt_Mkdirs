@@ -72,7 +72,7 @@ function isAllSelected() {
           'block w-full px-3 py-3 rounded-md text-sm font-medium transition-colors',
           isAllSelected() ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'
         )">
-          All Categories
+          All Skills
         </NuxtLink>
       </li>
 
