@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
+const slug = computed(() => route.params.slug as string);
 
-// Fetch categories from Sanity
 const { data: categoriesData } = await useFetch('/api/categories');
 
 const categories = computed(() => {
@@ -14,13 +14,16 @@ const categories = computed(() => {
   }));
 });
 
-// Reactive query params for items API
+const currentCategory = computed(() =>
+  categories.value.find((c: any) => c.slug === slug.value)
+);
+
 const itemsQuery = computed(() => ({
   limit: 12,
+  category: slug.value,
   page: route.query.page || undefined,
 }));
 
-// Fetch items from Sanity
 const { data: itemsData } = await useFetch('/api/items', {
   query: itemsQuery,
   watch: [itemsQuery],
@@ -49,7 +52,6 @@ const items = computed(() => {
 
 const totalPages = computed(() => itemsData.value?.pagination?.totalPages || 1);
 
-// Fetch sponsor item from Sanity
 const { data: sponsorItemData } = await useFetch('/api/items/sponsor');
 
 const sponsorItem = computed(() => {
@@ -70,61 +72,50 @@ const sponsorItem = computed(() => {
 });
 
 useSeoMeta({
-  title: 'AI Skills | Top AI Skills',
-  description: 'Browse the best AI Skills. Find and compare top AI tools across every category.',
-  ogTitle: 'AI Skills | Top AI Skills',
-  ogDescription: 'Browse the best AI Skills. Find and compare top AI tools across every category.',
-  keywords: 'AI Skills, browse AI skills, top AI Skills list, AI tools directory',
+  title: () => `${currentCategory.value?.name || 'Category'} - AI Skills | Top AI Skills`,
+  description: () => currentCategory.value?.name
+    ? `Browse the best ${currentCategory.value.name} AI tools and skills. Discover top resources.`
+    : 'Browse AI tools and skills by category.',
+  ogTitle: () => `${currentCategory.value?.name || 'Category'} - AI Skills | Top AI Skills`,
+  ogDescription: () => currentCategory.value?.name
+    ? `Browse the best ${currentCategory.value.name} AI tools and skills.`
+    : 'Browse AI tools and skills by category.',
+  ogImage: 'https://topaiskills.com/logo.png',
   twitterCard: 'summary_large_image',
+  twitterSite: '@zhirentegong',
+  twitterCreator: '@zhirentegong',
+  twitterImage: 'https://topaiskills.com/logo.png',
+  robots: 'index, follow',
 });
 </script>
 
 <template>
   <div class="mb-16">
-    <!-- Header -->
     <div class="mt-8">
       <div class="w-full flex flex-col items-center justify-center gap-8">
         <SharedHeaderSection
           label="Skill"
-          title="Explore AI skills"
+          :title="currentCategory?.name || 'Explore AI skills'"
         />
 
-        <!-- Category Filter -->
         <div class="w-full">
           <CategoryFilter :categories="categories" url-prefix="/skills/category" />
         </div>
       </div>
     </div>
 
-    <!-- Results -->
     <LayoutContainer class="mt-4">
-      <!-- Empty state -->
       <SharedEmptyState v-if="items.length === 0" />
 
-      <!-- Items grid with sponsor -->
       <template v-else>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- First 2 items -->
-          <ItemCard
-            v-for="item in items.slice(0, 2)"
-            :key="item._id"
-            :item="item"
-          />
-          
-          <!-- Sponsor card at position 3 -->
+          <ItemCard v-for="item in items.slice(0, 2)" :key="item._id" :item="item" />
           <ItemSponsorItemCard v-if="sponsorItem" :item="sponsorItem" />
-          
-          <!-- Rest of items -->
-          <ItemCard
-            v-for="item in items.slice(2)"
-            :key="item._id"
-            :item="item"
-          />
+          <ItemCard v-for="item in items.slice(2)" :key="item._id" :item="item" />
         </div>
 
-        <!-- Pagination -->
         <div class="mt-8 flex items-center justify-center">
-          <SharedPagination route-prefix="/skills" :total-pages="totalPages" />
+          <SharedPagination :route-prefix="`/skills/category/${slug}`" :total-pages="totalPages" />
         </div>
       </template>
     </LayoutContainer>
