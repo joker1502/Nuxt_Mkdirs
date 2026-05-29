@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Globe, Hash, LayoutGrid, ArrowLeft } from 'lucide-vue-next';
+import { Hash, LayoutGrid, ArrowLeft } from 'lucide-vue-next';
 import { getSanityImageUrl, getSanityIconUrl } from '~/utils/sanity-image';
 import { markdownToHtml } from '~/utils/markdown';
 
@@ -34,12 +34,6 @@ const iconUrl = computed(() => {
 // Get item link (affiliate or regular)
 const itemLink = computed(() => {
   return item.value?.affiliateLink || item.value?.link || '#';
-});
-
-// skills.sh URL
-const skillsShLink = computed(() => {
-  if (!item.value?.skillsShSlug) return '';
-  return `https://skills.sh/${item.value.skillsShSlug}`;
 });
 
 // Related items
@@ -156,12 +150,6 @@ if (item.value) {
                 <span>View on GitHub</span>
               </UiButton>
             </a>
-            <a v-if="skillsShLink" :href="skillsShLink" target="_blank" rel="nofollow noopener noreferrer">
-              <UiButton size="lg" variant="outline" class="group flex items-center gap-2">
-                <Globe class="w-5 h-5" />
-                <span>View on skills.sh</span>
-              </UiButton>
-            </a>
           </div>
         </div>
       </div>
@@ -196,17 +184,6 @@ if (item.value) {
                 <li v-if="item.submitter" class="flex justify-between">
                   <span class="text-muted-foreground">Publisher</span>
                   <span class="font-medium">{{ item.submitter.name }}</span>
-                </li>
-                <li v-if="skillsShLink" class="flex justify-between space-x-4">
-                  <span class="text-muted-foreground">Skill on skills.sh</span>
-                  <a
-                    :href="skillsShLink"
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    class="font-medium link-underline line-clamp-1"
-                  >
-                    {{ item.skillsShSlug }}
-                  </a>
                 </li>
                 <li class="flex justify-between">
                   <span class="text-muted-foreground">Published date</span>

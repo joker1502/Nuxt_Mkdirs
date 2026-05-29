@@ -60,12 +60,6 @@ export default defineType({
       description: "The link shown on the website",
     }),
     defineField({
-      name: "skillsShSlug",
-      title: "skills.sh Slug",
-      type: "string",
-      description: "The skill slug on skills.sh (e.g. 'n8n'). Used to generate the 'View on skills.sh' button on the skill page.",
-    }),
-    defineField({
       name: "affiliateLink",
       title: "Affiliate Link",
       type: "string",
