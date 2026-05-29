@@ -19,7 +19,6 @@
     "@nuxtjs/sanity": "^2.0.0",
     "@nuxtjs/sitemap": "^7.4.8",
     "@sanity/image-url": "^1.0.2",
-    "@sanity/uuid": "^3.0.2",
     "@tailwindcss/vite": "^4.1.17",
     "@vueuse/core": "^12.8.2",
     "ai": "^5.0.110",
@@ -50,6 +49,7 @@
     "@sanity/client": "^6.21.3",
     "@sanity/code-input": "^6.0.3",
     "@sanity/dashboard": "^5.0.0",
+    "@sanity/uuid": "^3.0.2",
     "@sanity/vision": "^4.19.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.15.29",
@@ -58,6 +58,7 @@
     "sanity-plugin-asset-source-unsplash": "^4.0.1",
     "sanity-plugin-markdown": "^6.0.0",
     "sanity-plugin-media": "^4.0.0",
+    "tsx": "^4.22.3",
     "typescript": "^5.9.3",
     "wrangler": "^4.54.0"
   }
