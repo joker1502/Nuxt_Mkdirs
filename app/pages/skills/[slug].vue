@@ -82,7 +82,7 @@ const breadcrumbItems = computed(() => {
   if (item.value?.categories?.[0]) {
     items.push({
       name: item.value.categories[0].name,
-      url: `https://topaiskills.com/skills/${item.value.categories[0].slug?.current}`,
+      url: `https://topaiskills.com/skills/category/${item.value.categories[0].slug?.current}`,
     });
   }
   items.push({ name: item.value?.name || '', url: `https://topaiskills.com/skills/${slug.value}` });
@@ -114,7 +114,7 @@ if (item.value) {
             <span>/</span>
             <NuxtLink 
               v-if="item.categories?.[0]" 
-              :to="`/skills/${item.categories[0].slug?.current}`"
+              :to="`/skills/category/${item.categories[0].slug?.current}`"
               class="hover:text-foreground"
             >
               {{ item.categories[0].name }}
@@ -221,7 +221,7 @@ if (item.value) {
               <ul class="flex flex-wrap gap-4">
                 <li v-for="category in item.categories" :key="category._id">
                   <NuxtLink
-                    :to="`/skills/${category.slug?.current}`"
+                    :to="`/skills/category/${category.slug?.current}`"
                     class="text-sm link-underline"
                   >
                     {{ category.name }}

@@ -130,7 +130,7 @@ const imageUrl = computed(() => {
           <NuxtLink
             v-for="category in item.categories"
             :key="category._id"
-            :to="`/skills/${category.slug}`"
+            :to="`/skills/category/${category.slug}`"
             :class="cn(
               'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium px-2 py-1 h-6',
               imageUrl
