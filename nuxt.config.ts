@@ -18,16 +18,13 @@ export default defineNuxtConfig({
       crawlLinks: true, // Follow links from pre-rendered pages
       failOnError: false, // Don't fail build if some routes error (they fallback to SSR)
       routes: [
-        '/',
         '/about',
         '/pricing',
         '/privacy',
         '/terms',
         '/search',
-        '/categories',
         '/tags',
         '/tutorials',
-        '/blog',
       ],
     },
 
@@ -43,8 +40,9 @@ export default defineNuxtConfig({
   routeRules: {
     // -- 动态内容页：SSR + SWR 缓存 (CDN 缓存 10-60 分钟) --
     // 这些页面内容变化不频繁，SWR 大幅减少 Functions 调用
+    '/':               { swr: 600  },  // 10min — 首页 (动态内容,不预渲染)
     '/skills':         { swr: 600  },  // 10min — 技能列表首页
-    '/skills/**':      { swr: 600  },  // 10min — 技能详情页
+    '/skills/**':      { swr: 600  },  // 10min — 技能详情+分类页
     '/blog/**':         { swr: 3600 },  // 60min — 博客文章
     '/categories':      { redirect: '/skills' },
     '/categories/**':   { redirect: '/skills' },
