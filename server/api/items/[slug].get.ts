@@ -20,6 +20,7 @@ export default defineEventHandler(async (event) => {
       description,
       introduction,
       link,
+      skillsShSlug,
       affiliateLink,
       featured,
       icon {

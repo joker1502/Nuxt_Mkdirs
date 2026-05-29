@@ -83,7 +83,7 @@ export const siteConfig: SiteConfig = {
   
   links: {
     twitter: "https://x.com/zhirentegong",
-    github: "https://github.com",
+    github: "https://github.com/joker1502/Nuxt_Mkdirs",
     // youtube: "https://youtube.com/@your-channel",
   },
   

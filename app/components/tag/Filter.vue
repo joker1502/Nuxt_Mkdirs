@@ -7,7 +7,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  urlPrefix: '/tag',
+  urlPrefix: '/tags',
 });
 
 const route = useRoute();

@@ -33,9 +33,8 @@ export default defineEventHandler(async (event) => {
       slug,
       excerpt,
       featured,
-      image {
+      coverImage {
         ...,
-        alt,
         "blurDataURL": asset->metadata.lqip,
       },
       publishDate,
