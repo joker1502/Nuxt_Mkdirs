@@ -46,11 +46,15 @@ export default defineNuxtConfig({
     '/skill/**':        { swr: 600  },  // 10min — 技能列表+详情页
     '/blog/**':         { swr: 3600 },  // 60min — 博客文章
     '/categories/**':   { swr: 600  },  // 10min — 分类列表
-    '/tags/**':         { swr: 600  },  // 10min — 标签列表
+    '/tags':            { swr: 600  },  // 10min — 标签列表首页
+    '/tags/**':         { swr: 600  },  // 10min — 标签详情页
     '/tutorial/**':     { swr: 3600 },  // 60min — 教程
     '/collection/**':   { swr: 600  },  // 10min — 集合
 
     // -- API 路由：不缓存 (数据实时性要求) --
+    '/blog':          { redirect: '/tutorial' },
+    '/blog/**':       { redirect: '/tutorial/**' },
+
     '/api/**': {
       headers: {
         'Cache-Control': 'public, max-age=0, must-revalidate',

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["README.md", "AI_SETUP.md", "CONTRIBUTING.md"],
+  "command": {
+    "dev": {
+      "template": "pnpm dev",
+      "description": "启动本地开发服务器 (localhost:3000)"
+    },
+    "build": {
+      "template": "pnpm build",
+      "description": "构建生产版本"
+    },
+    "deploy": {
+      "description": "构建并部署到 Cloudflare Pages",
+      "prompt": "先运行 pnpm build 构建项目，然后使用 wrangler deploy 部署到 Cloudflare。如果尚未配置 wrangler.jsonc，请先复制 wrangler.example.jsonc 并填写环境变量。"
+    },
+    "studio": {
+      "template": "pnpm dlx sanity dev",
+      "description": "启动 Sanity Studio 本地开发"
+    },
+    "studio-deploy": {
+      "template": "pnpm dlx sanity deploy",
+      "description": "部署 Sanity Studio 到生产环境"
+    },
+    "env": {
+      "description": "查看项目环境变量模板",
+      "prompt": "读取 .env.example 文件，列出所有需要配置的环境变量。在帮助用户配置时，引用 nuxt.config.ts 中 runtimeConfig 的对应关系。"
+    },
+    "ai-test": {
+      "template": "curl -X POST https://topaiskills.com/api/ai/autofill -H 'Content-Type: application/json' -d '{\"url\": \"$1\"}'",
+      "description": "测试 AI 自动填充功能 (需传入 URL 参数)"
+    }
+  },
+  "permission": {
+    "bash": {
+      "pnpm *": "allow",
+      "git *": "allow",
+      "npx *": "allow",
+      "wrangler *": "allow",
+      "openssl *": "allow",
+      "*": "ask"
+    },
+    "read": "allow",
+    "edit": "allow"
+  }
+}

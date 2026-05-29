@@ -146,13 +146,11 @@ function getStatusColor(status: string) {
           <DashboardPublishButton v-if="!item.publishDate" :item="item" />
           <DashboardUnpublishButton v-else-if="publishable && item.publishDate" :item="item" />
 
-          <!-- Edit button -->
-          <NuxtLink :to="`/edit/${item._id}`">
-            <UiButton variant="outline" class="group overflow-hidden">
-              <Edit class="w-4 h-4 mr-2" />
-              Edit
-            </UiButton>
-          </NuxtLink>
+          <!-- Edit button (coming soon) -->
+          <UiButton variant="outline" disabled class="group overflow-hidden">
+            <Edit class="w-4 h-4 mr-2" />
+            Edit
+          </UiButton>
         </div>
       </div>
     </div>

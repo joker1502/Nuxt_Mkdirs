@@ -188,12 +188,16 @@ useSeoMeta({
           <!-- Item Preview -->
           <div class="p-6 border-b">
             <div class="flex items-start gap-4">
-              <img
-                v-if="imageUrl"
-                :src="imageUrl"
-                :alt="item.name"
-                class="w-24 h-14 object-cover rounded-lg"
-              />
+              <div v-if="imageUrl" class="w-24 h-14 shrink-0">
+                <img
+                  :src="imageUrl"
+                  :alt="item.name"
+                  class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div v-else class="w-24 h-14 shrink-0 bg-muted rounded-lg flex items-center justify-center">
+                <span class="text-xs text-muted-foreground">No image</span>
+              </div>
               <div class="flex-1">
                 <h3 class="font-semibold">{{ item.name }}</h3>
                 <p class="text-sm text-muted-foreground line-clamp-2">{{ item.description }}</p>

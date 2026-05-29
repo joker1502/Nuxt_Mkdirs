@@ -129,13 +129,14 @@ if (post.value) {
               </nav>
 
               <!-- Blog post image -->
-              <div class="group overflow-hidden relative aspect-video rounded-lg transition-all border">
+              <div class="group overflow-hidden relative aspect-video rounded-lg transition-all border bg-muted flex items-center justify-center">
                 <img
                   v-if="imageUrl"
                   :src="imageUrl"
                   :alt="post.coverImage?.alt || post.title"
                   class="w-full h-full object-cover"
                 />
+                <span v-else class="text-muted-foreground text-sm">No cover image</span>
               </div>
 
               <!-- Blog post title -->

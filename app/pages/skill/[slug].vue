@@ -94,7 +94,7 @@ if (item.value) {
   useItemSchema({
     name: item.value.name || '',
     description: item.value.description,
-    image: imageUrl.value,
+    image: imageUrl.value || 'https://topaiskills.com/logo.png',
     url: `https://topaiskills.com/skill/${slug.value}`,
     category: item.value.categories?.[0]?.name,
   });
